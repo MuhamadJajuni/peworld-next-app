@@ -1,13 +1,13 @@
 <br />
 <p align="center">
 <div align="center">
-  <img height="150" <img src="https://iili.io/H3zVku9.png" alt="logo" border="0"/>
+  <img height="150" <img src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/logoPeworld.png?alt=media&token=7a7d55f4-4238-4261-97d1-0af2bdbe8d45" alt="logo" border="0"/>
 </div>
-  <h3 align="center">Web Food Recipe</h3>
+  <h3 align="center">Web Peworld</h3>
   <p align="center">
-    <a href="https://github.com/MuhamadJajuni/web-food-recipe"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/MuhamadJajuni/peworld-next-app"><strong>Explore the docs »</strong></a>
     <br />
-    <a href="https://web-food-recipe.vercel.app/">View Demo</a>
+    <a href="https://web.app/">View Demo</a>
     ·
     <a href="Muhamadjajuni1@gmail.com">Report Bug</a>
     ·
@@ -21,11 +21,11 @@
 
 - [Table of Contents](#table-of-contents)
 - [About The Project](#about-the-project)
-  - [Built With](#built-with)
+- [Built With](#built-with)
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Setup .env](#setup-env)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Setup .env.local](#setup-env)
 - [Screenshots](#screenshots)
 - [Contributing](#contributing)
 - [Related Project](#related-project)
@@ -35,20 +35,20 @@
 
 ## About The Project
 
-Web Food Recipe: Your Culinary Oasis
-
-Unleash your inner chef with Food Recipe, a web-based application designed for culinary enthusiasts. Seamlessly navigate through the user-friendly interface with quick Login and Register features. The real magic happens with the Create menu option, empowering you to share and discover the latest, most-loved recipes.
-
-Whether you're a seasoned pro or a kitchen novice, Food Recipe welcomes all levels of expertise. Dive into a world where you can easily whip up and share your favorite recipes with a community that shares your passion for food.
-
-But Food Recipe is more than just a recipe hub; it's a dynamic community where culinary trends come to life. Stay in the loop, discover, and recreate menus that are currently making waves globally. This is not just a platform; it's a celebration of flavors, creativity, and the joy of sharing culinary experiences. Welcome to Food Recipe—where every dish tells a story, and cooking becomes an adventure.
+Web Peworld is a web-based application for job seekers and companies to search for the company's best talent. has a Login, Register feature, and also has 2 Recruiter and Employee role features, for workers you can directly post your portfolio and skills, and for the recruiter role you can directly hire if there are candidates who suit the company's needs.
 
 ### Built With
 
-- [Redux](https://redux.js.org/)
-- [Bootstrap Css](https://getbootstrap.com/)
-- [React js](https://reactjs.org/)
-- [Cloudinary](https://cloudinary.com/)
+- [NextJS 14 App Latest Feature](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Next Auth](https://next-auth.js.org/)
+- [Next Auth 0Auth Google Provider](https://next-auth.js.org/providers/google)
+- [Bcrypt](https://www.npmjs.com/package/bcrypt)
+- [Preline](https://preline.co/)
+- [Daisyui](https://daisyui.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Firebase Storage](https://console.firebase.google.com/?hl=id)
+- [Firebase Firestrore](https://console.firebase.google.com/?hl=id)
 - and other
 
 <!-- GETTING STARTED -->
@@ -66,31 +66,43 @@ This is an example of how to list things you need to use the software and how to
 - Clone This Front End Repo
 
 ```
-git clone https://github.com/MuhamadJajuni/web-food-recipe
+git clone https://github.com/MuhamadJajuni/peworld-next-app
 ```
 
 - Go To Folder Repo
 
 ```
-cd web-food-recipe
+cd peworld-next-app
 ```
 
 - Install Module
 
 ```
-pnpm install
+npm install
 ```
 
-- <a href="#setup-env">Setup .env</a>
-- Type ` pnpm run dev` To Start Website
-- Type ` pnpm run production` To Start Production
+- <a href="#setup-env">Setup .env.local</a>
+- Type ` npm run dev` To Start Website
+- Type ` npm run production` To Start Production
 
 ### Setup .env
 
 Create .env file in your root project folder.
 
 ```
-VITE_REACT_BACKEND_URL = [BACKEND_URL]
+NEXTAUTH_SECRET = 
+GITHUB_SECRET = 
+GITHUB_ID = 
+GOOGLE_0AUTH_CLIENT_ID = 
+GOOGLE_0AUTH_CLIENT_SECRET = 
+
+
+FIREBASE_APIKEY = 
+FIREBASE_AUTHDOMAIN = 
+FIREBASE_PROJECTID = 
+FIREBASE_STORAGEBUCKET = 
+FIREBASE_MESSAGINGSENDERID = 
+FIREBASE_APPID = 
 ```
 
 <!-- ROADMAP -->
@@ -100,38 +112,28 @@ VITE_REACT_BACKEND_URL = [BACKEND_URL]
 <table>
  <tr>
     <td> <img width="400px" src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/peworld-landing-page.png?alt=media&token=83931b21-a188-453e-b3a2-4643497c9a6d"  border="0"  alt="2" /></td>
-    <td><img width="400px"  src="https://res.cloudinary.com/djm3ribxl/image/upload/v1700459123/Register-page_tqsbjz.png" border="0" alt="3" /> </td>
+    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/register-workers.png?alt=media&token=668c134c-7570-44d4-a675-6ba08593f4f4" border="0" alt="3" /> </td>
   </tr>
    <tr>
      <td>Landing Page</td>
-     <td>Register</td>
+     <td>Register Workers</td>
   </tr>
 
   <tr>
-   <td><img width="400px" src="https://res.cloudinary.com/djm3ribxl/image/upload/v1700459258/Landing-Page_weyny1.png" border="0" alt="1" /></td>
-     <td><img width="400px"  src="https://res.cloudinary.com/djm3ribxl/image/upload/v1700459490/Popular-Page_sonvom.png"  border="0" alt="4" /></td>
+   <td><img width="400px" src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/register-recruiters.png?alt=media&token=177c47c1-8322-46c4-8cc5-90fc3ba5ff64" border="0" alt="1" /></td>
+     <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/login-worker.png?alt=media&token=0bd47b48-7088-44ef-8481-c89999a6080c"  border="0" alt="4" /></td>
   </tr>
    <tr>
-    <td>Landing Page</td>
-      <td>More Popular Recipe</td>  
+    <td>Register Recruiters</td>
+      <td>Login Workers</td>  
   </tr>
   <tr>
-    <td><img width="400px"  src="https://res.cloudinary.com/djm3ribxl/image/upload/v1700459947/detail-page_ylfee7.png" border="0" alt="3" /> </td>
-      <td><img width="400px"  src="https://res.cloudinary.com/djm3ribxl/image/upload/v1700460053/add_pxkgw9.png" border="0" alt="3" /> </td>
+    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/login-recruiter.png?alt=media&token=2f2e5175-1598-49a9-bc1f-49bc6c209744" border="0" alt="3" /> </td>
   </tr>
    <tr>
-      <td>Detail Recipe</td>
-      <td>Add Recipe</td>
-   
+      <td>Login Recruiters</td>   
   </tr>
-  <tr>
-      <td><img width="400px" src="https://res.cloudinary.com/djm3ribxl/image/upload/v1700460240/detail-video_yi1ymm.png" border="0" alt="4" /></td>
-      <td><img width="400px" src="https://res.cloudinary.com/djm3ribxl/image/upload/v1700460389/my-profil_a6xosd.png" border="0" alt="4" /></td>
-  </tr>
-   <tr>
-      <td>Detail Video Recipe</td>
-      <td>My Profile</td>
-  </tr>
+
   
  
 </table>
@@ -152,7 +154,7 @@ Contributions are what make the open source community such an amazing place to b
 
 
 
-:rocket: [`Demo Web Food recipe`](https://.com/)
+:rocket: [`Demo Web Peworld`](https://.com/)
 
 
 
@@ -164,4 +166,4 @@ Contributions are what make the open source community such an amazing place to b
 My Email : Muhamadjajuni1@gmail.com
 <br/>
 <br/>
-Project Link: [https://github.com/MuhamadJajuni/web-food-recipe](https://github.com/MuhamadJajuni/web-food-recipe)
+Project Link: [https://github.com/MuhamadJajuni/peworld-next-app](https://github.com/MuhamadJajuni/peworld-next-app)
