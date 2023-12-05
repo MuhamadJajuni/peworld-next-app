@@ -3,6 +3,19 @@ import { compare } from 'bcrypt';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
+interface CredentialsWithRole {
+    email: string;
+    password: string;
+    role: string;
+}
+
+interface UserWithRole {
+    email: string;
+    fullname: string;
+    role: string;
+    // ... (tambahkan properti lain jika diperlukan)
+}
+
 const authOptions: NextAuthOptions = {
     session: {
         strategy: 'jwt',
@@ -15,30 +28,38 @@ const authOptions: NextAuthOptions = {
             credentials: {
                 email: { label: "Email", type: "email", placeholder: "Email" },
                 password: { label: "Password", type: "password", placeholder: "Password" },
+                role: { label: "Role", type: "text", placeholder: "Role" },
             },
-            async authorize(credentials) {
-                const { email, password } = credentials as {
-                    email: string;
-                    password: string;
-                };
+            async authorize(credentials: CredentialsWithRole) {
+                const { email, password, role } = credentials;
 
-                const user: any = await login ({email})
+                const user: UserWithRole | null = await login({ email });
+
                 if (user) {
                     const passwordConfirm = await compare(password, user.password);
                     if (passwordConfirm) {
-                        return user;
+                        if (user.role === role) {
+                            // Tambahkan properti role ke token di sini
+                            return { ...user, role };
+                        } else {
+                            // Role tidak sesuai
+                            throw new Error("Role tidak sesuai");
+                        }
+                    } else {
+                        // Password salah
+                        throw new Error("Password salah");
                     }
-                    return null;
                 } else {
-                    return null;
+                    // Email tidak terdaftar
+                    throw new Error("Email tidak terdaftar");
                 }
-
             },
         }),
     ],
     callbacks: {
         async jwt({ token, account, profile, user }: any) {
             if (account?.provider === "credentials") {
+                // Pastikan properti role ada di token
                 token.email = user.email;
                 token.fullname = user.fullname;
                 token.role = user.role;
@@ -67,5 +88,6 @@ const authOptions: NextAuthOptions = {
 const handler = NextAuth(authOptions);
 
 export {
-    handler as GET, handler as POST
+    handler as GET,
+    handler as POST
 };

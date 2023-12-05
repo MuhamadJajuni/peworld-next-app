@@ -31,12 +31,14 @@ export default function LoginPage() {
         role: values.role,
         callbackUrl: "/home",
       });
-
+  
       if (!res?.error) {
         push("/homeMenu");
       } else {
-        if (res.status === 401) {
+        if (res.status === 400) {
           setError("Email Or Password Invalid");
+        } else if (res.status === 403) {
+          setError("Role does not match"); // Update this message accordingly
         }
       }
     } catch (error) {
@@ -45,6 +47,7 @@ export default function LoginPage() {
       setSubmitting(false);
     }
   };
+  
 
   return (
     <main className="flex grid-col-2 bg-slate-50 font-openSans">
@@ -121,8 +124,8 @@ export default function LoginPage() {
                   <option value="" disabled>
                     Pilih Role
                   </option>
-                  <option value="worker">Pekerja (Workers)</option>
-                  <option value="recruiter">Perekrut (Recruiters)</option>
+                  <option value="workers">Pekerja (Workers)</option>
+                  <option value="recruiters">Perekrut (Recruiters)</option>
                 </FastField>
                 <ErrorMessage
                   name="role"
