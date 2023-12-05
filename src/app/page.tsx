@@ -1,113 +1,198 @@
-import Image from 'next/image'
+'use client'
+/* eslint-disable react/no-unescaped-entities */
+import FooterLayout from "cmp/Footer";
+import NavbarLayout from "cmp/Navbar";
+import ceklisAmber from "img/ceklis-bg-amber.png";
+import ceklisPurple from "img/ceklis-bg-purple.png";
+import hero1 from "img/hero1.png";
+import hero2 from "img/hero2.png";
+import hero3 from "img/hero3.png";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
+    <main className="scroll-smooth focus:scroll-auto container md:container md:mx-auto bg-neutral-50 ">
+      <NavbarLayout />
+      <section className="mx-5 my-5 pt-5">
+        <section className="grid grid-cols-2 justify-center items-center mt-5">
+          <section className="p-4">
+            <p className="text-[#1F2A36] leading-[70px] text-[44px] font-[600] text-center font-openSans">
+              Talenta terbaik negeri <br></br> untuk perubahan <br></br>{" "}
+              revolusi 4.0
+            </p>
+            <p className="text-[#46505C] font-[400] text-[18px] leading-[28px] my-3 mx-3 font-openSans">
+              Sebuah website untuk mencari lowongan kerja terbaik, dan pekerja
+              profesional terbesar se-Indonesia
+            </p>
+            <Link href="/register">
+              <button
+                type="button"
+                className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 font-openSans mt-5 ml-2 py-3 px-4 my-3 mx-3 inline-flex items-center gap-x-2 text-sm rounded-md font-semibold border border-transparent bg-[#5E50A1] text-white disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+              >
+                Mulai Dari Sekarang
+              </button>
+            </Link>
+          </section>
+          <section className="p-4">
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+              src={hero1}
+              alt="Picture of the author"
+              className="object-contain"
             />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+          </section>
+        </section>
+      </section>
+      <section className="mx-5 my-5 pt-5">
+        <section className="grid grid-cols-2">
+          <section className="px-4 py-9 p-4">
+            <Image
+              src={hero2}
+              alt="Picture of the author"
+              className="object-contain"
+            />
+          </section>
+          <section className="p-4">
+            <p className="font-[600] text-[36px] leading-[56px] text-[#1F2A36]">
+              Kenapa harus mencari tallent di peworld
+            </p>
+            <section className="flex flex-col mx-2 my-2">
+              {/* Baris 1 */}
+              <section className="flex">
+                <section className="flex-none p-4">
+                  <Image
+                    src={ceklisPurple}
+                    alt="Logo"
+                    className="object-cover"
+                  />
+                </section>
+                <section className="flex-none p-4">
+                  <p>Lorem ipsum dolor sit amet.</p>
+                </section>
+              </section>
+              {/* Baris 2 */}
+              <section className="flex">
+                <section className="flex-none p-4">
+                  <Image
+                    src={ceklisPurple}
+                    alt="Logo"
+                    className="object-cover"
+                  />
+                </section>
+                <section className="flex-none p-4">
+                  <p>Lorem ipsum dolor sit amet.</p>
+                </section>
+              </section>
+              {/* Baris 3 */}
+              <section className="flex">
+                <section className="flex-none p-4">
+                  <Image
+                    src={ceklisPurple}
+                    alt="Logo"
+                    className="object-cover"
+                  />
+                </section>
+                <section className="flex-none p-4">
+                  <p>Lorem ipsum dolor sit amet.</p>
+                </section>
+              </section>
+              <section className="flex">
+                <section className="flex-none p-4">
+                  <Image
+                    src={ceklisPurple}
+                    alt="Logo"
+                    className="object-cover"
+                  />
+                </section>
+                <section className="flex-none p-4">
+                  <p>Lorem ipsum dolor sit amet.</p>
+                </section>
+              </section>
+            </section>
+          </section>
+        </section>
+      </section>
+      <section className="mx-5 my-5 pt-5">
+        <section className="grid grid-cols-2 pl-4 ml-36">
+          <section className="p-4 justify-items-center">
+            <section className="justify-items-center">
+              <h1 className="font-[600] text-[36px] leading-[56px] text-[#1F2A36] font-openSans">
+                Skill Tallent
+              </h1>
+              <h2 className="text-[#46505C] font-[400] text-[18px] leading-[28px] mx-2 my-2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+                euismod ipsum et dui rhoncus auctor.
+              </h2>
+            </section>
+            <section className="grid grid-rows-4 grid-flow-col gap-4 mx-3 my-3">
+              <section className="flex">
+                <Image src={ceklisAmber} alt="Logo" />
+                <p className="ml-3">Java</p>
+              </section>
+              <section className="flex">
+                <Image src={ceklisAmber} alt="Logo" />
+                <p className="ml-3">Kotlin</p>
+              </section>
+              <section className="flex">
+                <Image src={ceklisAmber} alt="Logo" />
+                <p className="ml-3">PHP</p>
+              </section>
+              <section className="flex">
+                <Image src={ceklisAmber} alt="Logo" />
+                <p className="ml-3">Javascript</p>
+              </section>
+              <section className="flex">
+                <Image src={ceklisAmber} alt="Logo" />
+                <p className="ml-3">Golang</p>
+              </section>
+              <section className="flex">
+                <Image src={ceklisAmber} alt="Logo" />
+                <p className="ml-3">C++</p>
+              </section>
+              <section className="flex">
+                <Image src={ceklisAmber} alt="Logo" />
+                <p className="ml-3">Ruby</p>
+              </section>
+              <section className="flex">
+                <Image src={ceklisAmber} alt="Logo" />
+                <p className="ml-3">10+ Bahasa Lainnya</p>
+              </section>
+            </section>
+          </section>
+          <section className="flex justify-end p-4">
+            <Image
+              src={hero3}
+              alt="Picture of the author"
+              className="object-contain"
+            />
+          </section>
+        </section>
+      </section>
+      <section className="grid grid-cols-1">
+        <section className="bg-white h-60">01</section>
+      </section>
+      <section className="grid grid-cols-1 mx-5 my-5 mb-[100px] mt-[82px]">
+        <section className="flex h-[227px] mx-32">
+          <section className="bg-[#5E50A1] rounded-tl-[40px] w-full rounded-tr-[8px] rounded-br-[40px] rounded-bl-[8px] grid grid-cols-2 gap-4">
+            <section className="self-center place-content-center mx-10">
+              <p className="text-white font-openSans text-4xl">
+                Lorem ipsum <br></br>dolor sit amet
+              </p>
+            </section>
+            <section className="self-center place-content-end mx-auto mr-10">
+              <Link href="/Register">
+                <button
+                  type="button"
+                  className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-white duration-300 font-openSans mt-5 ml-2 py-3 px-4 my-3 mx-3 inline-flex items-center gap-x-2 text-sm font-medium border rounded-md border-gray-200 bg-white text-gray-800 shadow-sm disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                >
+                  Mulai Dari Sekarang
+                </button>
+              </Link>
+            </section>
+          </section>
+        </section>
+      </section>
+      <FooterLayout />
     </main>
-  )
+  );
 }
