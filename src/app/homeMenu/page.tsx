@@ -1,6 +1,7 @@
 "use client";
 
 import FooterLayout from "@/components/Footer";
+import NavbarAuth from "@/components/NavbarAuth";
 import fotoHarry from "img/harry-styles.png";
 import fotoLouis from "img/loius-tomlinson.png";
 import fotoNial from "img/nial-horan.png";
@@ -9,21 +10,27 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import NavbarAuth from "@/components/NavbarAuth";
 
 export default function Home() {
   const { data: session, status }: { data: any; status: string } = useSession();
   const router = useRouter();
-  console.log(session?.user.role);
-  
+
   useEffect(() => {
-    if (status === "unauthenticated" || session?.user.role !== 'admin') {
+    if (status === "unauthenticated") {
       router.push("/login");
-    } if ( status === "authenticated" && session?.user.role === 'admin') {
-      router.push("/home");
     }
-  }, [router, session?.user.role, status]);
-  
+
+    if (status === "authenticated" && session?.user) {
+      const { role } = session.user;
+
+      if (role === "workers") {
+        router.push("/homeMenu");
+      } else if (role === "recruiters") {
+        router.push("/homeMenu");
+      } else {
+      }
+    }
+  }, [router, session, status]);
 
   return (
     <main className="container">

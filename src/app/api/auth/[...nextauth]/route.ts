@@ -1,3 +1,5 @@
+import { login } from '@/lib/service';
+import { compare } from 'bcrypt';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
@@ -20,19 +22,17 @@ const authOptions: NextAuthOptions = {
                     password: string;
                 };
 
-                const user: any = {
-                    id: 1,
-                    name: "Jajuni",
-                    email: "Jajuni@gmail.com",
-                    role: "admin",
-                    fullname: "Jajuni"
-                };
-
-                if (email === "Jajuni@gmail.com" && password === "1234") {
-                    return user;
+                const user: any = await login ({email})
+                if (user) {
+                    const passwordConfirm = await compare(password, user.password);
+                    if (passwordConfirm) {
+                        return user;
+                    }
+                    return null;
                 } else {
                     return null;
                 }
+
             },
         }),
     ],

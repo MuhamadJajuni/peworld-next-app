@@ -1,4 +1,4 @@
-'use client'
+"use client";
 /* eslint-disable react/no-unescaped-entities */
 import FooterLayout from "cmp/Footer";
 import NavbarLayout from "cmp/Navbar";

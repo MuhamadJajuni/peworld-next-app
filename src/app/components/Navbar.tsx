@@ -1,5 +1,4 @@
 import logoPeworld from "img/logoPeworld.png";
-import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -17,15 +16,14 @@ export default function NavbarLayout() {
         style={{ marginTop: "12px", marginRight: "25px" }}
       >
         <ul>
-          {/* <Link href="http://localhost:3000/api/auth/signin/google"> */}
+          <Link href="/login">
             <button
               type="button"
               className="transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-110 hover:bg-white duration-300 font-openSans ml-2 py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium border rounded-md border-gray-200 bg-white text-gray-800 shadow-sm disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-              onClick={() => signIn()}
             >
               Masuk
             </button>
-          {/* </Link> */}
+          </Link>
           <Link href="/register">
             <button
               type="button"
