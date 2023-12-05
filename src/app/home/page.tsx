@@ -5,33 +5,10 @@ import NavbarAuth from "@/components/NavbarAuth";
 import fotoHarry from "img/harry-styles.png";
 import fotoLouis from "img/loius-tomlinson.png";
 import fotoNial from "img/nial-horan.png";
-import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 export default function Home() {
-  const { data: session, status }: { data: any; status: string } = useSession();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/login");
-    }
-
-    if (status === "authenticated" && session?.user) {
-      const { role } = session.user;
-
-      if (role === "workers") {
-        router.push("/homeMenu");
-      } else if (role === "recruiters") {
-        router.push("/homeMenu");
-      } else {
-      }
-    }
-  }, [router, session, status]);
-
   return (
     <main className="container">
       <NavbarAuth />

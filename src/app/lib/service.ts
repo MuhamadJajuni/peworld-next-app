@@ -18,7 +18,6 @@ export async function retrieveDataById(collectionName: string, id: string) {
     return data
 }
 
-
 export async function register(
     data: {
         length: number
