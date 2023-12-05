@@ -7,6 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
@@ -17,6 +19,7 @@ const validationSchema = Yup.object().shape({
 
 export default function LoginPage() {
   const { push } = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
   const handleLogin = async (
@@ -31,23 +34,31 @@ export default function LoginPage() {
         role: values.role,
         callbackUrl: "/home",
       });
-  
-      if (!res?.error) {
-        push("/homeMenu");
-      } else {
-        if (res.status === 400) {
+
+      if (!res?.ok || res?.status !== 200) {
+        if (res?.error === "Password salah") {
+          setError("Password salah");
+        } else if (res?.error === "Role tidak sesuai") {
+          setError("Role tidak sesuai");
+        } else if (res?.error === "Email tidak terdaftar") {
+          setError("Email tidak terdaftar");
+        } else {
           setError("Email Or Password Invalid");
-        } else if (res.status === 403) {
-          setError("Role does not match"); // Update this message accordingly
         }
+      } else {
+        // Autentikasi berhasil
+        push("/homeMenu");
+        setIsLoading(false);
+        toast.success("Login Berhasil");
       }
     } catch (error) {
+      setIsLoading(false);
       console.error(error);
+      toast.error("Login Gagal");
     } finally {
       setSubmitting(false);
     }
   };
-  
 
   return (
     <main className="flex grid-col-2 bg-slate-50 font-openSans">
@@ -75,6 +86,7 @@ export default function LoginPage() {
                     <h1 className="font-italic">{error}</h1>
                   </div>
                 )}
+
                 <label className="text-[12px] text-[#858D96]">Email</label>
                 <FastField
                   type="email"
@@ -133,11 +145,11 @@ export default function LoginPage() {
                   className="text-red-500"
                 />
                 <button
-                  type="submit"
                   disabled={isSubmitting}
+                  type="submit"
                   className="btn btn-block my-3 btn-warning text-white"
                 >
-                  Masuk
+                  {isLoading ? "Loading..." : "Masuk"}
                 </button>
                 <button
                   type="button"
@@ -180,6 +192,7 @@ export default function LoginPage() {
           )}
         </Formik>
       </section>
+      <ToastContainer />
     </main>
   );
 }

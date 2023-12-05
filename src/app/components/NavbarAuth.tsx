@@ -1,3 +1,4 @@
+import React from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -6,8 +7,15 @@ export default function NavbarAuth() {
   const pathname = usePathname();
   const router = useRouter();
   const { data: session, status }: { data: any; status: string } = useSession();
-  console.log(session?.user.email);
-  
+
+  const handleSignOut = () => {
+    const isConfirmed = window.confirm("Are you sure you want to log out?");
+    
+    if (isConfirmed) {
+      signOut();
+    }
+  };
+
   return (
     <nav className="flex bg-white py-2 px-5 justify-between">
       <div className="flex">
@@ -36,7 +44,7 @@ export default function NavbarAuth() {
             <h4 className="text-black mr-2">Hi, {session?.user?.email}</h4>
             <button
               className="bg-orange-400 rounded-md px-3 text-sm h-7 hover:text-blue-300"
-              onClick={() => signOut()}
+              onClick={handleSignOut}
             >
               Log Out
             </button>
