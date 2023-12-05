@@ -1,6 +1,6 @@
+import bcrypt from 'bcrypt'
 import { addDoc, collection, doc, getDoc, getDocs, getFirestore, query, where } from 'firebase/firestore'
 import app from "./init"
-import bcrypt from 'bcrypt'
 const firestore = getFirestore(app)
 
 export async function retrieveData(collectionName: string) {

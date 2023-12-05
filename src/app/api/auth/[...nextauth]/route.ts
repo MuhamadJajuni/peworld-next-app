@@ -12,7 +12,7 @@ interface CredentialsWithRole {
 interface UserWithRole {
   email: string;
   fullname: string;
-  password: string; 
+  password: string;
   role: string;
 }
 

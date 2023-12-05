@@ -1,4 +1,3 @@
-import React from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -10,7 +9,7 @@ export default function NavbarAuth() {
 
   const handleSignOut = () => {
     const isConfirmed = window.confirm("Are you sure you want to log out?");
-    
+
     if (isConfirmed) {
       signOut();
     }
