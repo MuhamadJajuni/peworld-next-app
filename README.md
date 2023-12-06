@@ -111,11 +111,11 @@ FIREBASE_APPID =
 
 <table>
  <tr>
-    <td> <img width="400px" src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/peworld-landing-page.png?alt=media&token=83931b21-a188-453e-b3a2-4643497c9a6d"  border="0"  alt="2" /></td>
+    <td> <img width="400px" src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/landingBefore.png?alt=media&token=1c2518db-5b4f-420c-99fd-33da265bbd48"  border="0"  alt="2" /></td>
     <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/register-workers.png?alt=media&token=668c134c-7570-44d4-a675-6ba08593f4f4" border="0" alt="3" /> </td>
   </tr>
    <tr>
-     <td>Landing Page</td>
+     <td>Landing Page Before Login</td>
      <td>Register Workers</td>
   </tr>
 
@@ -129,9 +129,11 @@ FIREBASE_APPID =
   </tr>
   <tr>
     <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/login-recruiter.png?alt=media&token=2f2e5175-1598-49a9-bc1f-49bc6c209744" border="0" alt="3" /> </td>
+    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/landingAuth.png?alt=media&token=cee2a3d0-d37e-44d6-a3b2-241ecd541385" border="0" alt="3" /> </td>
   </tr>
    <tr>
       <td>Login Recruiters</td>   
+      <td>Landing After Login</td>   
   </tr>
 
   
