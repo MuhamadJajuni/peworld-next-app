@@ -3,9 +3,10 @@
 
 import FooterLayout from "@/components/Footer";
 import NavbarAuth from "@/components/NavbarAuth";
-import foto from "img/LouisTomlinson.svg";
+import foto from "img/TomLouis.svg";
 import Image from "next/image";
 import Link from "next/link";
+import maps from "img/maps.svg";
 import { useEffect, useState } from "react";
 interface Geolocation {
   lat: string;
@@ -64,35 +65,44 @@ export default function Home() {
     .slice(pageNumber * workersPerPage, (pageNumber + 1) * workersPerPage)
     .map((worker) => (
       <div
-        key={worker.id}
-        className="bg-white rounded-xl overflow-hidden shadow-lg"
-      >
-        <div className="relative h-48 overflow-hidden">
-          <Image
-            src={foto} // Ganti dengan URL gambar yang sebenarnya
-            alt={`Picture of ${worker.name.firstname} ${worker.name.lastname}`}
-            className="object-cover w-full h-full"
-            layout="fill"
-          />
-        </div>
-        <div className="p-4">
-          <h1 className="text-lg font-bold mb-2">
-            {worker.name.firstname} {worker.name.lastname}
-          </h1>
-          <p className="text-sm text-gray-500">{worker.email}</p>
-          <p className="text-sm text-gray-500">
-            {worker.address.city}, {worker.address.street}
-          </p>
-          <hr className="my-3" />
-          <div className="flex justify-end">
-            <Link href={`/workers/${worker.username}`}>
-              <button className="bg-[#5E50A1] text-white rounded py-2 text-sm">
-                Lihat Profile
-              </button>
-            </Link>
-          </div>
-        </div>
+  key={worker.id}
+  className="bg-white rounded-xl overflow-hidden shadow-lg flex"
+>
+  <div className="relative h-48 overflow-hidden w-1/2 flex-shrink-0">
+    <Image
+      src={foto}
+      alt={`Picture of ${worker.name.firstname} ${worker.name.lastname}`}
+      className="object-cover w-full h-full"
+      layout="fill"
+    />
+  </div>
+  <div className="p-4 w-1/2 flex flex-col justify-between">
+    <div>
+      <h1 className="text-lg font-bold mb-2">
+        {worker.name.firstname} {worker.name.lastname}
+      </h1>
+      <p className="text-sm text-gray-500">{worker.email}</p>
+      <p className="text-sm text-gray-500">
+        {worker.address.city}, {worker.address.street}
+      </p>
+      <hr className="my-3" />
+      <div className="flex items-start justify-start mb-3">
+        <Image src={maps} alt="Maps Logo" className="w-6 h-6 mr-2" />
+        <span className="text-sm text-gray-500 mb-3">
+          {worker.address.city}, {worker.address.street}
+        </span>
       </div>
+    </div>
+    <div className="flex justify-end">
+      <Link href={`/workers/${worker.username}`}>
+        <button className="bg-[#5E50A1] text-white rounded py-2 text-sm">
+          Lihat Profile
+        </button>
+      </Link>
+    </div>
+  </div>
+</div>
+
     ));
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
@@ -102,15 +112,15 @@ export default function Home() {
   };
 
   return (
-    <main className="container">
+    <main className="container mx-auto">
       <NavbarAuth />
       <nav className="flex bg-[#5E50A1] py-5 px-5">
         <div className="font-openSans font-bold text-[28px] leading-[20px] content-center text-white">
           Top Jobs
         </div>
       </nav>
-      <section className="flex flex-col mx-12 mt-8 mb-2">
-        <form onSubmit={handleSearch}>
+      <section className="flex flex-col mx-4 sm:mx-8 md:mx-12 lg:mx-16 xl:mx-20 mt-8 mb-2">
+        <form onSubmit={handleSearch} className="mb-8">
           <label
             htmlFor="default-search"
             className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -138,15 +148,15 @@ export default function Home() {
             <input
               type="search"
               id="default-search"
-              className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Search Mockups, Logos..."
+              className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Search Name or Email"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               required
             />
             <button
               type="submit"
-              className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              className="text-white absolute end-2.5 bottom-2.5 bg-[#5E50A1] hover:bg-purple-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Search
             </button>
