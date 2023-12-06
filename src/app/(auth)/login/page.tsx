@@ -47,7 +47,7 @@ export default function LoginPage() {
         }
       } else {
         // Autentikasi berhasil
-        push("/homeMenu");
+        push("/home");
         setIsLoading(false);
         toast.success("Login Berhasil");
       }

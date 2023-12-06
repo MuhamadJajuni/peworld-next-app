@@ -2,9 +2,10 @@
 
 import FooterLayout from "@/components/Footer";
 import NavbarAuth from "@/components/NavbarAuth";
-import fotoHarry from "img/harry-styles.png";
-import fotoLouis from "img/loius-tomlinson.png";
-import fotoNial from "img/nial-horan.png";
+import fotoHarry from "img/HarryStyles.svg";
+import fotoLiam from "img/LiamPayne.svg"
+import fotoLouis from "img/LouisTomlinson.svg";
+import fotoNial from "img/NialHoran.svg";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -64,7 +65,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="grid grid-flow-col my-3">
+        <div className="grid grid-flow-row my-3">
           <div className="grid grid-cols-2 max-h-min my-2">
             <div className=" flex">
               <Image
@@ -134,6 +135,28 @@ export default function Home() {
             </div>
           </div>
           <hr></hr>
+          <div className="grid grid-cols-2 max-h-min my-2">
+            <div className=" flex">
+              <Image
+                src={fotoLiam}
+                alt="Picture of the author"
+                className="rounded-full object-cover"
+              />
+              <div className="flex flex-col ml-3">
+                <h1 className="text-lg font-bold">Liam Payne</h1>
+                <br></br>
+                <p className="text-sm mt-0">Web Developer</p>
+                <h5 className="text-sm">Javascript</h5>
+              </div>
+            </div>
+            <div className="flex justify-end items-center content-center">
+              <Link href="/workers/NialHoran">
+                <button className="bg-[#5E50A1] text-white rounded py-2 text-sm mr-5">
+                  Lihat Profile
+                </button>
+              </Link>
+            </div>
+          </div>
         </div>
         <FooterLayout />
       </section>

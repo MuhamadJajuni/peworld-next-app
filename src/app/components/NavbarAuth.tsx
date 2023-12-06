@@ -3,12 +3,10 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 export default function NavbarAuth() {
-  const pathname = usePathname();
-  const router = useRouter();
   const { data: session, status }: { data: any; status: string } = useSession();
 
   const handleSignOut = () => {
-    const isConfirmed = window.confirm("Are you sure you want to log out?");
+    const isConfirmed = window.confirm("Apakah kamu mau Logout?");
 
     if (isConfirmed) {
       signOut();

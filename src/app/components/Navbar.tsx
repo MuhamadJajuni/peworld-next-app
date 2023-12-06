@@ -1,37 +1,77 @@
-import logoPeworld from "img/logoPeworld.png";
+"use client";
+
+import logoPeworld from "img/logoPeworld.svg";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function NavbarLayout() {
+  const { data: session } = useSession(); // Use NextAuth.js hook to get session data
+
   return (
-    <nav className="flex justify-between">
-      <Image
-        className="w-16 md:w-32 lg:w-48"
-        src={logoPeworld}
-        style={{ width: "130px", marginTop: "12px", marginLeft: "25px" }}
-        alt="logo"
-      />
+    <nav className="flex flex-col md:flex-row justify-between items-center md:items-stretch">
+      <div className="flex items-center">
+        <Image
+          className="w-16 md:w-32 lg:w-48"
+          src={logoPeworld}
+          style={{ width: "130px", marginTop: "12px", marginLeft: "25px" }}
+          alt="logo"
+        />
+        {session && (
+          <li className="flex justify-between mx-1 md:mt-3 mt-4 ml-32 items-center">
+            <Link href={"/home"}>
+              <button
+                type="button"
+                className="font-openSans font-semibold text-[18px] leading-[28px] text-[#1F2A36] items-center md:ml-0 transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-bounce"
+              >
+                Home
+              </button>
+            </Link>
+          </li>
+        )}
+      </div>
+
       <section
-        className="flex justify-end w-16 md:w-32 lg:w-48"
+        className="flex justify-end md:justify-end w-full md:w-auto"
         style={{ marginTop: "12px", marginRight: "25px" }}
       >
-        <ul>
-          <Link href="/login">
-            <button
-              type="button"
-              className="transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-110 hover:bg-white duration-300 font-openSans ml-2 py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium border rounded-md border-gray-200 bg-white text-gray-800 shadow-sm disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-            >
-              Masuk
-            </button>
-          </Link>
-          <Link href="/register">
-            <button
-              type="button"
-              className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 font-openSans ml-2 py-3 px-4 inline-flex items-center gap-x-2 text-sm rounded-md font-semibold border border-transparent bg-[#5E50A1] text-white disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-            >
-              Daftar
-            </button>
-          </Link>
+        <ul className="flex justify-between gap-3 mx-1">
+          {session ? (
+            <></>
+          ) : (
+            <>
+              <Link href="/login">
+                <button
+                  type="button"
+                  className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-bounce bg-white text-black border border-slate-300 text-sm items-center rounded-lg py-2 px-4"
+                >
+                  Masuk
+                </button>
+              </Link>
+              <Link href="/register">
+                <button
+                  type="button"
+                  className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-bounce bg-[#5E50A1] hover:border text-sm text-white items-center rounded-lg py-2 px-4"
+                >
+                  Daftar
+                </button>
+              </Link>
+            </>
+          )}
+          {session && (
+            <>
+              <li className="flex justify-between gap-3 mx-1">
+                <Link href={"/workers"}>
+                  <button
+                    type="button"
+                    className="bg-[#5E50A1] hover:bg-white hover:text-black border-spacing-1 hover:border hover:border-slate-300 text-sm text-white items-center rounded py-2 px-4"
+                  >
+                    Profile
+                  </button>
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </section>
     </nav>
