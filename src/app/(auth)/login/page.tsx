@@ -11,6 +11,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
 
+const Spinner = () => <span className="loading loading-bars loading-md"></span>;
+
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string().required("Password is required"),
@@ -46,41 +48,39 @@ export default function LoginPage() {
           setError("Email Or Password Invalid");
         }
       } else {
-        // Autentikasi berhasil
         push("/home");
         setIsLoading(false);
         toast.success("Login Berhasil");
       }
     } catch (error) {
       setIsLoading(false);
-      console.error(error);
-      toast.error("Login Gagal");
+      toast.error("Login Gagal!");
     } finally {
       setSubmitting(false);
     }
   };
 
   return (
-    <main className="flex grid-col-2 bg-slate-50 font-openSans">
-      <section className="flex justify-normal">
+    <main className="grid grid-cols-1 md:grid-cols-2 bg-slate-50 font-openSans">
+      <section className="flex justify-center md:justify-start">
         <Image src={leftPoster} alt="logo" priority />
       </section>
-      <section className="md:max-xl:flex flex justify-center items-center bg-slate-50 w-1/2">
+      <section className="md:max-xl:flex flex justify-center items-center bg-slate-50">
         <Formik
           initialValues={{ email: "", password: "", role: "" }}
           validationSchema={validationSchema}
           onSubmit={handleLogin}
         >
           {({ isSubmitting, values, handleChange }) => (
-            <Form className="flex flex-col w-1/2">
-              <section className="flex flex-col">
-                <text className="text-2xl mb-5 text-[32px] font-openSans font-semibold">
+            <Form className="flex flex-col w-full md:w-1/2 px-6">
+              <section className="flex flex-col gap-2 my-1 max-w-md md:mx-auto">
+                <h1 className="text-3xl md:text-4xl font-semibold text-[32px] mb-5 text-center md:text-left">
                   Hallo, People
-                </text>
-                <text className="font-normal my-5 text-[#46505C]">
+                </h1>
+                <p className="text-sm md:text-base font-normal mb-5 text-[#46505C] text-center md:text-left">
                   Temukan developer berbakat & terbaik di berbagai bidang
                   keahlian
-                </text>
+                </p>
                 {error !== "" && (
                   <div className="flex justify-center text-center text-red-500 font-bold mb-3">
                     <h1 className="font-italic">{error}</h1>
@@ -95,13 +95,14 @@ export default function LoginPage() {
                   value={values.email}
                   onChange={handleChange}
                   placeholder="Masukkan Email"
-                  className="input input-bordered w-full max-w-xs text-[14px]"
+                  className="input input-bordered w-full text-[14px]"
                 />
                 <ErrorMessage
                   name="email"
                   component="div"
                   className="text-red-500"
                 />
+
                 <label className="text-[12px] text-[#9EA0A5] mt-3">
                   Kata Sandi
                 </label>
@@ -112,13 +113,14 @@ export default function LoginPage() {
                   value={values.password}
                   onChange={handleChange}
                   placeholder="Masukkan Kata Sandi"
-                  className="input input-bordered w-full max-w-xs text-[14px] text-[#9EA0A5]"
+                  className="input input-bordered w-full text-[14px] text-[#9EA0A5]"
                 />
                 <ErrorMessage
                   name="password"
                   component="div"
                   className="text-red-500"
                 />
+
                 <label
                   htmlFor="role"
                   className="text-[12px] text-[#9EA0A5] mt-3"
@@ -131,7 +133,7 @@ export default function LoginPage() {
                   name="role"
                   value={values.role}
                   onChange={handleChange}
-                  className="select select-bordered select-sm w-full max-w-xs"
+                  className="select select-bordered select-sm w-full"
                 >
                   <option value="" disabled>
                     Pilih Role
@@ -145,15 +147,16 @@ export default function LoginPage() {
                   className="text-red-500"
                 />
                 <button
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || isLoading}
                   type="submit"
                   className="btn btn-block my-3 btn-warning text-white"
                 >
-                  {isLoading ? "Loading..." : "Masuk"}
+                  {isSubmitting || isLoading ? <Spinner /> : "Masuk"}
                 </button>
                 <button
                   type="button"
-                  className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                  className="my-1
+              py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 >
                   <svg
                     className="w-4 h-auto"
@@ -181,12 +184,12 @@ export default function LoginPage() {
                   </svg>
                   Sign in with Google
                 </button>
-                <text className="text-[#1F2A36] text-[15px] leading-[21px] font-[400] flex justify-center my-3 mt-3 font-openSans">
+                <p className="text-[#1F2A36] flex justify-center items-center text-[15px] leading-[21px] font-[400] my-2 text-center md:text-left">
                   Anda belum punya akun?{" "}
                   <Link href="/register">
-                    <text className="text-[#FBB017]"> Daftar disini</text>
+                    <span className="text-[#FBB017]"> Daftar disini</span>
                   </Link>
-                </text>
+                </p>
               </section>
             </Form>
           )}

@@ -67,9 +67,7 @@ export default function RegisterPage() {
       e.target.reset();
       setIsLoading(false);
       push("/login");
-      toast.success(
-        "Registration successful! Please check your email to verify your account."
-      );
+      toast.success("Registrasi Berhasil!");
     } else if (res.status === 400) {
       setError("Email already exists");
       setIsLoading(false);
@@ -82,8 +80,8 @@ export default function RegisterPage() {
   };
 
   return (
-    <main className="flex grid-col-2 bg-slate-50 font-openSans">
-      <section className="flex justify-normal">
+    <main className="grid grid-cols-1 md:grid-cols-2 bg-slate-50 font-openSans">
+      <section className="flex justify-center md:justify-start">
         <Image
           src={leftPoster}
           alt="logo"
@@ -91,21 +89,25 @@ export default function RegisterPage() {
           priority
         />
       </section>
-      <section className="md:max-xl:flex flex justify-center items-center bg-slate-50 w-1/2">
-        <form className="flex flex-col w-1/2" onSubmit={handleSubmit}>
-          <section className="flex flex-col gap-1 my-2">
-            <text className="text-2xl mb-[15px] text-[32px] font-openSans font-semibold">
+      <section className="md:max-xl:flex flex justify-center items-center bg-slate-50">
+        <form
+          className="flex flex-col w-full md:w-1/2 px-6"
+          onSubmit={handleSubmit}
+        >
+          <section className="flex flex-col gap-2 my-1 max-w-md md:mx-auto">
+            <h1 className="text-3xl md:text-4xl font-semibold text-[32px] mb-5 text-center md:text-left">
               Hallo, People
-            </text>
-            <text className="font-normal my-5 mt-5 text-[#46505C]">
+            </h1>
+            <p className="text-sm md:text-base font-normal mb-5 text-[#46505C] text-center md:text-left">
               Silahkan Mendaftar Terlebih Dahulu, Untuk Melihat Talenta
               Profesional Dari Berbagai Pilihan
-            </text>
+            </p>
             {error !== "" && (
               <div className="flex justify-center text-center text-red-500 font-bold mb-3">
                 <h1 className="font-italic">{error}</h1>
               </div>
             )}
+
             <label className="text-[12px] text-[#858D96]">Full Name</label>
             <input
               id="name"
@@ -114,8 +116,9 @@ export default function RegisterPage() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Masukkan Full Name"
-              className="input input-bordered w-full max-w-xs text-[14px]"
+              className="input input-bordered w-full text-[14px]"
             />
+
             <label className="text-[12px] text-[#858D96]">Email</label>
             <input
               id="email"
@@ -124,8 +127,9 @@ export default function RegisterPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Masukkan Email"
-              className="input input-bordered w-full max-w-xs text-[14px]"
+              className="input input-bordered w-full text-[14px]"
             />
+
             <label className="text-[#9EA0A5] text-[12px]">No handphone</label>
             <input
               id="NoHp"
@@ -134,8 +138,9 @@ export default function RegisterPage() {
               value={NoHp}
               onChange={(e) => setNoHp(e.target.value)}
               placeholder="Masukkan No.HP"
-              className="input input-bordered w-full max-w-xs text-[14px] text-[#9EA0A5]"
+              className="input input-bordered w-full text-[14px] text-[#9EA0A5]"
             />
+
             <label className="text-[#9EA0A5] text-[12px]">Kata Sandi</label>
             <input
               id="password"
@@ -144,10 +149,11 @@ export default function RegisterPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Masukkan Kata Sandi"
-              className="input input-bordered w-full max-w-xs text-[14px] text-[#9EA0A5]"
+              className="input input-bordered w-full text-[14px] text-[#9EA0A5]"
             />
+
             <section>
-              <label htmlFor="role" className="text-[12px] text-[#9EA0A5]">
+              <label htmlFor="role" className="text-[12px] text-[#9EA0A5] mt-3">
                 Role
               </label>
               <select
@@ -155,7 +161,7 @@ export default function RegisterPage() {
                 name="role"
                 value={selectedRole}
                 onChange={(e) => setSelectedRole(e.target.value)}
-                className="select select-bordered select-sm w-full max-w-xs"
+                className="select select-bordered select-sm w-full"
               >
                 <option value="" disabled>
                   Pilih Role
@@ -164,47 +170,23 @@ export default function RegisterPage() {
                 <option value="recruiters">Perekrut (Recruiters)</option>
               </select>
             </section>
+
             <button
               disabled={isLoading}
               type="submit"
               className="btn btn-block my-3 btn-warning text-white"
             >
-              {isLoading ? "Loading..." : "Daftar"}
+              {isLoading ? (
+                <span className="loading loading-bars loading-md"></span>
+              ) : (
+                "Daftar"
+              )}
             </button>
-            <button
-              type="button"
-              className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-            >
-              <svg
-                className="w-4 h-auto"
-                width="46"
-                height="47"
-                viewBox="0 0 46 47"
-                fill="none"
-              >
-                <path
-                  d="M46 24.0287C46 22.09 45.8533 20.68 45.5013 19.2112H23.4694V27.9356H36.4069C36.1429 30.1094 34.7347 33.37 31.5957 35.5731L31.5663 35.8669L38.5191 41.2719L38.9885 41.3306C43.4477 37.2181 46 31.1669 46 24.0287Z"
-                  fill="#4285F4"
-                />
-                <path
-                  d="M23.4694 47C29.8061 47 35.1161 44.9144 39.0179 41.3012L31.625 35.5437C29.6301 36.9244 26.9898 37.8937 23.4987 37.8937C17.2793 37.8937 12.0281 33.7812 10.1505 28.1412L9.88649 28.1706L2.61097 33.7812L2.52296 34.0456C6.36608 41.7125 14.287 47 23.4694 47Z"
-                  fill="#34A853"
-                />
-                <path
-                  d="M10.1212 28.1413C9.62245 26.6725 9.32908 25.1156 9.32908 23.5C9.32908 21.8844 9.62245 20.3275 10.0918 18.8588V18.5356L2.75765 12.8369L2.52296 12.9544C0.909439 16.1269 0 19.7106 0 23.5C0 27.2894 0.909439 30.8731 2.49362 34.0456L10.1212 28.1413Z"
-                  fill="#FBBC05"
-                />
-                <path
-                  d="M23.4694 9.07688C27.8699 9.07688 30.8622 10.9863 32.5344 12.5725L39.1645 6.11C35.0867 2.32063 29.8061 0 23.4694 0C14.287 0 6.36607 5.2875 2.49362 12.9544L10.0918 18.8588C11.9987 13.1894 17.25 9.07688 23.4694 9.07688Z"
-                  fill="#EB4335"
-                />
-              </svg>
-              Sign Up with Google
-            </button>
-            <text className="text-[#1F2A36] text-[15px] leading-[21px] font-[400] flex justify-center my-3 mt-3 font-openSans">
+
+            <text className="text-[#1F2A36] flex justify-center items-center my-2 text-[15px] leading-[21px] font-[400] text-center md:text-left">
               Sudah Punya Akun?{" "}
               <Link href="/login">
-                <text className="text-[#FBB017]"> Masuk disini</text>
+                <span className="text-[#FBB017] mx-1"> Masuk disini</span>
               </Link>
             </text>
           </section>
