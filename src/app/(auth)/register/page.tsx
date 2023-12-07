@@ -12,6 +12,7 @@ export default function RegisterPage() {
   const { push } = useRouter();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [NoHp, setNoHp] = useState("");
   const [password, setPassword] = useState("");
@@ -54,6 +55,7 @@ export default function RegisterPage() {
     const res = await fetch("/api/auth/register", {
       method: "POST",
       body: JSON.stringify({
+        name: e.target.name.value,
         email: e.target.email.value,
         password: e.target.password.value,
         NoHp: e.target.NoHp.value,
@@ -91,8 +93,8 @@ export default function RegisterPage() {
       </section>
       <section className="md:max-xl:flex flex justify-center items-center bg-slate-50 w-1/2">
         <form className="flex flex-col w-1/2" onSubmit={handleSubmit}>
-          <section className="flex flex-col">
-            <text className="text-2xl mb-[20px] text-[32px] font-openSans font-semibold">
+          <section className="flex flex-col gap-1 my-2">
+            <text className="text-2xl mb-[15px] text-[32px] font-openSans font-semibold">
               Hallo, People
             </text>
             <text className="font-normal my-5 mt-5 text-[#46505C]">
@@ -104,6 +106,16 @@ export default function RegisterPage() {
                 <h1 className="font-italic">{error}</h1>
               </div>
             )}
+            <label className="text-[12px] text-[#858D96]">Full Name</label>
+            <input
+              id="name"
+              name="name"
+              type="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Masukkan Full Name"
+              className="input input-bordered w-full max-w-xs text-[14px]"
+            />
             <label className="text-[12px] text-[#858D96]">Email</label>
             <input
               id="email"
@@ -114,7 +126,6 @@ export default function RegisterPage() {
               placeholder="Masukkan Email"
               className="input input-bordered w-full max-w-xs text-[14px]"
             />
-            <br />
             <label className="text-[#9EA0A5] text-[12px]">No handphone</label>
             <input
               id="NoHp"
@@ -136,7 +147,7 @@ export default function RegisterPage() {
               className="input input-bordered w-full max-w-xs text-[14px] text-[#9EA0A5]"
             />
             <section>
-              <label htmlFor="role" className="text-[12px] text-[#9EA0A5] mt-3">
+              <label htmlFor="role" className="text-[12px] text-[#9EA0A5]">
                 Role
               </label>
               <select

@@ -10,8 +10,8 @@ interface CredentialsWithRole {
 }
 
 interface UserWithRole {
+  name: string;
   email: string;
-  fullname: string;
   password: string;
   role: string;
 }
@@ -60,7 +60,7 @@ const authOptions: NextAuthOptions = {
     async jwt({ token, account, user }: any) {
       if (account?.provider === 'credentials') {
         token.email = user.email;
-        token.fullname = user.fullname;
+        token.name = user.name;
         token.role = user.role;
       }
       return token;
@@ -70,8 +70,8 @@ const authOptions: NextAuthOptions = {
       if ('email' in token) {
         session.user.email = token.email;
       }
-      if ('fullname' in token) {
-        session.user.fullname = token.fullname;
+      if ('name' in token) {
+        session.user.name = token.name;
       }
       if ('role' in token) {
         session.user.role = token.role;
