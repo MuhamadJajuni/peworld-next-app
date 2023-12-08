@@ -7,4 +7,4 @@ export function mainMiddleware(_request: NextRequest) {
     return res
 }
 
-export default withAuth(mainMiddleware, ["/home"])
+export default withAuth(mainMiddleware, ["/home", "/login", "/register", "/workers", "/recruiters"])

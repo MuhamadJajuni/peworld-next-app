@@ -6,7 +6,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function NavbarLayout() {
-  const { data: session } = useSession(); // Use NextAuth.js hook to get session data
+  const { data: session } = useSession();
+
+  const profileLink =
+    session?.user.role === "recruiters" ? "/recruiters" : "/workers";
 
   return (
     <nav className="flex flex-col md:flex-row justify-between items-center md:items-stretch">
@@ -61,7 +64,7 @@ export default function NavbarLayout() {
           {session && (
             <>
               <li className="flex justify-between gap-3 mx-1">
-                <Link href={"/workers"}>
+                <Link href={profileLink}>
                   <button
                     type="button"
                     className="bg-[#5E50A1] hover:bg-white hover:text-black border-spacing-1 hover:border hover:border-slate-300 text-sm text-white items-center rounded py-2 px-4"
