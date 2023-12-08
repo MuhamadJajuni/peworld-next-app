@@ -1,4 +1,3 @@
-// Import the register function from the correct module or file
 import { register } from "@/lib/service";
 
 import { NextRequest, NextResponse } from "next/server";
