@@ -4,9 +4,9 @@
 import FooterLayout from "@/components/Footer";
 import NavbarAuth from "@/components/NavbarAuth";
 import foto from "img/TomLouis.svg";
+import maps from "img/maps.svg";
 import Image from "next/image";
 import Link from "next/link";
-import maps from "img/maps.svg";
 import { useEffect, useState } from "react";
 interface Geolocation {
   lat: string;
@@ -65,44 +65,43 @@ export default function Home() {
     .slice(pageNumber * workersPerPage, (pageNumber + 1) * workersPerPage)
     .map((worker) => (
       <div
-  key={worker.id}
-  className="bg-white rounded-xl overflow-hidden shadow-lg flex"
->
-  <div className="relative h-48 overflow-hidden w-1/2 flex-shrink-0">
-    <Image
-      src={foto}
-      alt={`Picture of ${worker.name.firstname} ${worker.name.lastname}`}
-      className="object-cover w-full h-full"
-      layout="fill"
-    />
-  </div>
-  <div className="p-4 w-1/2 flex flex-col justify-between">
-    <div>
-      <h1 className="text-lg font-bold mb-2">
-        {worker.name.firstname} {worker.name.lastname}
-      </h1>
-      <p className="text-sm text-gray-500">{worker.email}</p>
-      <p className="text-sm text-gray-500">
-        {worker.address.city}, {worker.address.street}
-      </p>
-      <hr className="my-3" />
-      <div className="flex items-start justify-start mb-3">
-        <Image src={maps} alt="Maps Logo" className="w-6 h-6 mr-2" />
-        <span className="text-sm text-gray-500 mb-3">
-          {worker.address.city}, {worker.address.street}
-        </span>
+        key={worker.id}
+        className="bg-white rounded-xl overflow-hidden shadow-lg flex"
+      >
+        <div className="relative h-48 overflow-hidden w-1/2 flex-shrink-0">
+          <Image
+            src={foto}
+            alt={`Picture of ${worker.name.firstname} ${worker.name.lastname}`}
+            className="object-cover w-full h-full"
+            layout="fill"
+          />
+        </div>
+        <div className="p-4 w-1/2 flex flex-col justify-between">
+          <div>
+            <h1 className="text-lg font-bold mb-2">
+              {worker.name.firstname} {worker.name.lastname}
+            </h1>
+            <p className="text-sm text-gray-500">{worker.email}</p>
+            <p className="text-sm text-gray-500">
+              {worker.address.city}, {worker.address.street}
+            </p>
+            <hr className="my-3" />
+            <div className="flex items-start justify-start mb-3">
+              <Image src={maps} alt="Maps Logo" className="w-6 h-6 mr-2" />
+              <span className="text-sm text-gray-500 mb-3">
+                {worker.address.city}, {worker.address.street}
+              </span>
+            </div>
+          </div>
+          <div className="flex justify-end">
+            <Link href={`/workers/${worker.username}`}>
+              <button className="bg-[#5E50A1] text-white rounded py-2 text-sm">
+                Lihat Profile
+              </button>
+            </Link>
+          </div>
+        </div>
       </div>
-    </div>
-    <div className="flex justify-end">
-      <Link href={`/workers/${worker.username}`}>
-        <button className="bg-[#5E50A1] text-white rounded py-2 text-sm">
-          Lihat Profile
-        </button>
-      </Link>
-    </div>
-  </div>
-</div>
-
     ));
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {

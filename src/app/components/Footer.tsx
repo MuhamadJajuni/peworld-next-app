@@ -26,9 +26,7 @@ export default function FooterLayout() {
         <section className="grid grid-cols-1 md:grid-cols-2 py-2 pt-4">
           <section className="mt-2 md:mt-0 ml-2">
             <Link href="https://camp.pijarmahir.id/">
-              <p className="text-white">
-                2023 Peworld. All right reserved
-              </p>
+              <p className="text-white">2023 Peworld. All right reserved</p>
             </Link>
           </section>
           <section className="flex justify-center md:justify-end mt-2 md:mt-0 mr-2">

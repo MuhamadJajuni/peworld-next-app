@@ -56,9 +56,7 @@ export default function Home() {
             <section className="flex flex-col md:flex-col">
               <section className="flex flex-col md:flex-row">
                 <section className="flex-none p-4">
-                  <Image
-                    src={ceklisPurple}
-                    alt="Logo"/>
+                  <Image src={ceklisPurple} alt="Logo" />
                 </section>
                 <section className="flex-none p-4">
                   <p>Mempunyai skill yang relevan dengan industri.</p>
@@ -67,10 +65,7 @@ export default function Home() {
               {/* Baris 2 */}
               <section className="flex flex-col md:flex-row">
                 <section className="flex-none p-4">
-                  <Image
-                    src={ceklisPurple}
-                    alt="Logo"
-                  />
+                  <Image src={ceklisPurple} alt="Logo" />
                 </section>
                 <section className="flex-none p-4">
                   <p>Kemampuan beradaptasi dan semangat terus belajar.</p>
@@ -79,10 +74,7 @@ export default function Home() {
               {/* Baris 3 */}
               <section className="flex flex-col md:flex-row">
                 <section className="flex-none p-4">
-                  <Image
-                    src={ceklisPurple}
-                    alt="Logo"
-                  />
+                  <Image src={ceklisPurple} alt="Logo" />
                 </section>
                 <section className="flex-none p-4">
                   <p>Mempunyai skill public speaking.</p>
@@ -91,10 +83,7 @@ export default function Home() {
               {/* Baris 4 */}
               <section className="flex flex-col md:flex-row">
                 <section className="flex-none p-4">
-                  <Image
-                    src={ceklisPurple}
-                    alt="Logo"
-                  />
+                  <Image src={ceklisPurple} alt="Logo" />
                 </section>
                 <section className="flex-none p-4">
                   <p>Growth mindset serta kemauan untuk berkembang.</p>

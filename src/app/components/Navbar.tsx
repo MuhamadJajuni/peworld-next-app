@@ -43,7 +43,7 @@ export default function NavbarLayout() {
               <Link href="/login">
                 <button
                   type="button"
-                  className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-bounce bg-white text-black border border-slate-300 text-sm items-center rounded-lg py-2 px-4"
+                  className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-bounce bg-white text-black border border-slate-300 text-sm items-center rounded-md py-2 px-4"
                 >
                   Masuk
                 </button>
@@ -51,7 +51,7 @@ export default function NavbarLayout() {
               <Link href="/register">
                 <button
                   type="button"
-                  className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-bounce bg-[#5E50A1] hover:border text-sm text-white items-center rounded-lg py-2 px-4"
+                  className="transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-bounce bg-[#5E50A1] hover:border text-sm text-white items-center rounded-md py-2 px-4"
                 >
                   Daftar
                 </button>
@@ -64,7 +64,7 @@ export default function NavbarLayout() {
                 <Link href="/home">
                   <button
                     type="button"
-                    className="bg-[#5E50A1] hover:bg-white hover:text-black border-spacing-1 hover:border hover:border-slate-300 text-sm text-white items-center rounded py-2 px-4"
+                    className="bg-[#5E50A1] hover:bg-white hover:text-black border-spacing-1 hover:border hover:border-slate-300 text-sm text-white items-center rounded-md py-2 px-4"
                   >
                     Profile
                   </button>

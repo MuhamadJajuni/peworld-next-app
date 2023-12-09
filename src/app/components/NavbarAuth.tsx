@@ -1,7 +1,6 @@
 import { signIn, signOut, useSession } from "next-auth/react";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 interface NavbarAuthProps {}
 
@@ -34,13 +33,14 @@ const NavbarAuth: React.FC<NavbarAuthProps> = () => {
               </li>
             </Link>
           )}
-          {status === "authenticated" && session?.user?.role === "recruiters" && (
-            <Link href="/recruiters">
-              <li className="text-black cursor-pointer hover:text-blue-300">
-                Recruiters
-              </li>
-            </Link>
-          )}
+          {status === "authenticated" &&
+            session?.user?.role === "recruiters" && (
+              <Link href="/recruiters">
+                <li className="text-black cursor-pointer hover:text-blue-300">
+                  Recruiters
+                </li>
+              </Link>
+            )}
         </ul>
       </div>
       <div className="flex items-center">

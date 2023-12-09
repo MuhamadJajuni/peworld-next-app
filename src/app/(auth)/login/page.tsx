@@ -5,7 +5,7 @@ import leftPoster from "img/poster-login.svg";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,14 +19,12 @@ const validationSchema = Yup.object().shape({
   role: Yup.string().required("Role is required"),
 });
 
-  
-export default function LoginPage({searchParams}: any) {
+export default function LoginPage({ searchParams }: any) {
   const { push } = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-    
-  const callbackUrl = searchParams?.callbackUrl || '/';
+  const callbackUrl = searchParams?.callbackUrl || "/";
   const handleLogin = async (
     values: { email: any; password: any; role: any },
     { setSubmitting }: any
@@ -48,7 +46,7 @@ export default function LoginPage({searchParams}: any) {
         } else if (res?.error === "Email tidak terdaftar") {
           setError("Email tidak terdaftar");
         } else {
-          setError("Pastikan email, password, role benar");
+          setError("Pastikan Email, Password, dan Role sudah benar");
         }
       } else {
         push(searchParams.callbackUrl || "/");
@@ -62,7 +60,6 @@ export default function LoginPage({searchParams}: any) {
       setSubmitting(false);
     }
   };
-
 
   return (
     <main className="grid grid-cols-1 md:grid-cols-2 bg-slate-50 font-openSans">
@@ -159,7 +156,9 @@ export default function LoginPage({searchParams}: any) {
                 </button>
                 <button
                   type="button"
-                  onClick={() => signIn('google', { callbackUrl, redirect: false })}
+                  onClick={() =>
+                    signIn("google", { callbackUrl, redirect: false })
+                  }
                   className="my-1
               py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 >
