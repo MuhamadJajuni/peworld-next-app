@@ -48,7 +48,7 @@ export default function LoginPage({searchParams}: any) {
         } else if (res?.error === "Email tidak terdaftar") {
           setError("Email tidak terdaftar");
         } else {
-          setError("Email Or Password Invalid");
+          setError("Pastikan email, password, role benar");
         }
       } else {
         push(searchParams.callbackUrl || "/");

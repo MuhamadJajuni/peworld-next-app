@@ -9,13 +9,6 @@ interface CredentialsWithRole {
   role: string;
 }
 
-interface UserWithRole {
-  name: string;
-  email: string;
-  password: string;
-  role: string;
-}
-
 const authOptions: NextAuthOptions = {
   session: {
     strategy: 'jwt',
@@ -30,28 +23,27 @@ const authOptions: NextAuthOptions = {
         password: { label: 'Password', type: 'password', placeholder: 'Password' },
         role: { label: 'Role', type: 'text', placeholder: 'Role' },
       },
-      async authorize(credentials: CredentialsWithRole) {
+      async authorize(credentials: CredentialsWithRole | undefined, req: any) {
+        if (!credentials) {
+          throw new Error('Credentials are undefined');
+        }
+
         const { email, password, role } = credentials;
 
         try {
-          const user: UserWithRole | null = await login({ email });
+          const user: any = await login({ email });
 
-          if (!user) {
-            throw new Error('Email tidak terdaftar');
+          if (user) {
+            const passwordConfirm = await compare(password, user.password);
+
+            if (passwordConfirm && user.role === role) {
+              return user;
+            }
           }
 
-          const passwordConfirm = await compare(password, user.password);
-          if (!passwordConfirm) {
-            throw new Error('Password salah');
-          }
-
-          if (user.role !== role) {
-            throw new Error('Role tidak sesuai');
-          }
-
-          return { ...user, role };
+          return null;
         } catch (error) {
-          throw new Error(error.message);
+          throw new Error("gagal login");
         }
       },
     }),
@@ -87,4 +79,3 @@ const authOptions: NextAuthOptions = {
 const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
-
