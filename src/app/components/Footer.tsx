@@ -4,39 +4,25 @@ import Link from "next/link";
 
 export default function FooterLayout() {
   return (
-    <footer className="bg-[#5E50A1] min-h-72 font-openSans">
-      <section className="mx-5 my-2 py-2 mb-4">
-        <Image
-          src={logoFooter}
-          alt="Picture of the author"
-          style={{
-            marginBottom: "10px",
-            marginLeft: "10px",
-            marginTop: "5px",
-          }}
-          className="object-cover"
-        />
-        <section className="ml-3 mt-5">
-          <p className="text-white">
-            Lorem ipsum dolor sit amet, consectetur <br></br> adipiscing elit.
-            In euismod ipsum et dui <br></br> rhoncus auctor.
+    <footer className="flex flex-col mt-8 w-full max-h-max absolute bg-[#5E50A1] font-openSansl">
+      <section className="grid grid-cols-1 md:grid-cols-3 w-full mb-0 mx-4 md:mx-10 my-8">
+        <div className="flex flex-col">
+          <Image src={logoFooter} alt="logo" />
+          <p className="text-start text-white my-5">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
+            distinctio vero culpa, voluptatem voluptas mollitia?
+          </p>
+        </div>
+      </section>
+      <section className="grid grid-cols-1 md:grid-cols-2 border-t mb-0 mx-4 md:mx-10 mt-10">
+        <section className="mb-5 md:mb-0">
+          <p className="text-white my-5">
+            Copyright © 2023 Peworld. All rights reserved.
           </p>
         </section>
-        <section className="border-b py-8" />
-        <section className="grid grid-cols-1 md:grid-cols-2 py-2 pt-4">
-          <section className="mt-2 md:mt-0 ml-2">
-            <Link href="https://camp.pijarmahir.id/">
-              <p className="text-white">2023 Peworld. All right reserved</p>
-            </Link>
-          </section>
-          <section className="flex justify-center md:justify-end mt-2 md:mt-0 mr-2">
-            <Link href="https://wa.link/64tcez">
-              <p className="text-white mx-3">Telepon</p>
-            </Link>
-            <Link href="mailto:datatersimpan@gmail.com">
-              <p className="text-white mx-3">Email</p>
-            </Link>
-          </section>
+        <section className="flex flex-col md:flex-row justify-end items-center gap-5 my-5">
+          <p className="text-white">Telepon</p>
+          <p className="text-white">Email</p>
         </section>
       </section>
     </footer>
