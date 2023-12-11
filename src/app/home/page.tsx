@@ -113,8 +113,8 @@ export default function Home() {
   return (
     <main className="container mx-auto">
       <NavbarAuth />
-      <nav className="flex bg-[#5E50A1] py-5 px-5">
-        <div className="font-openSans font-bold text-[28px] leading-[20px] content-center text-white">
+      <nav className="flex bg-[#5E50A1] py-4 px-5">
+        <div className="flex justify-items-center ml-5 mx-5 font-openSans font-bold text-[22px] leading-[20px] content-center text-white">
           Top Jobs
         </div>
       </nav>
@@ -161,10 +161,10 @@ export default function Home() {
             </button>
           </div>
         </form>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-5 mt-5 ">
           {displayWorkers}
         </div>
-        <div className="flex justify-center my-5">
+        <div className="flex justify-center my-5 mt-10">
           <div className="join">
             <button
               className="join-item btn"
