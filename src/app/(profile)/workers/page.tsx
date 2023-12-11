@@ -9,19 +9,19 @@ import foto6 from "img/porto-hape6.svg";
 import fotoLouis from "img/foto-louis-rounded.svg";
 import logoPeworld from "img/logoPeworld.svg";
 import Image from "next/image";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 
 export default function WorkersPage() {
   const [activeTab, setActiveTab] = useState(1);
 
-  const handleTabChange = (tabIndex) => {
+  const handleTabChange = (tabIndex: SetStateAction<number>) => {
     setActiveTab(tabIndex);
   };
 
   return (
     <main className="flex flex-col relative">
       <nav className="py-3 px-3">
-        <ul className="flex justify-between mx-3">
+        <ul className="flex justify-between items-center mx-5">
           <li className="flex justify-start items-center">
             <Image
               src={logoPeworld}

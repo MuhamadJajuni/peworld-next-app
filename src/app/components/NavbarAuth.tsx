@@ -2,7 +2,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import logoPeworld from "img/logoPeworld.svg";
-import Avatar from "img/HarryStyles.svg";
+import Avatar from "img/LiamPayne.svg";
 
 interface GreetingProps {
   session: any;
