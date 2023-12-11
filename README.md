@@ -39,8 +39,10 @@ Web Peworld is a web-based application for job seekers and companies to search f
 
 ### Built With
 
-- [NextJS 14 App Latest Feature](https://nextjs.org/)
+- [NextJS 14 App-Router](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [TanStack Form](https://tanstack.com/form/latest)
+- [Formik + Yup Form](https://formik.org/)
 - [Next Auth](https://next-auth.js.org/)
 - [Next Auth 0Auth Google Provider](https://next-auth.js.org/providers/google)
 - [Bcrypt](https://www.npmjs.com/package/bcrypt)
