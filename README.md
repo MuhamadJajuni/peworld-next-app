@@ -1,7 +1,7 @@
 <br />
 <p align="center">
 <div align="center">
-  <img height="150" <img src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/logoPeworld.png?alt=media&token=7a7d55f4-4238-4261-97d1-0af2bdbe8d45" alt="logo" border="0"/>
+  <img height="150" <img src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2FlogoPeworld.svg?alt=media&token=a1b8d123-d400-4162-bdc6-819d59457a17" alt="logo" border="0"/>
 </div>
   <h3 align="center">Web Peworld</h3>
   <p align="center">
@@ -109,8 +109,8 @@ FIREBASE_APPID =
 
 <table>
  <tr>
-    <td> <img width="400px" src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/landingBefore.png?alt=media&token=1c2518db-5b4f-420c-99fd-33da265bbd48"  border="0"  alt="2" /></td>
-    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/register-workers.png?alt=media&token=668c134c-7570-44d4-a675-6ba08593f4f4" border="0" alt="3" /> </td>
+    <td> <img width="400px" src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Flanding-before-login.png?alt=media&token=b9f2232b-277c-4bbd-b636-1e8944b44dee"  border="0"  alt="2" /></td>
+    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fregister-workers.png?alt=media&token=34379a18-c207-43e9-a3cd-c5f870a44fac" border="0" alt="3" /> </td>
   </tr>
    <tr>
      <td>Landing Page Before Login</td>
@@ -118,24 +118,24 @@ FIREBASE_APPID =
   </tr>
 
   <tr>
-   <td><img width="400px" src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/register-recruiters.png?alt=media&token=177c47c1-8322-46c4-8cc5-90fc3ba5ff64" border="0" alt="1" /></td>
-     <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/login-worker.png?alt=media&token=0bd47b48-7088-44ef-8481-c89999a6080c"  border="0" alt="4" /></td>
+   <td><img width="400px" src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fregister-recruiters.png?alt=media&token=c6bcc8c1-6ec6-444b-893d-4cb0ba8fd374" border="0" alt="1" /></td>
+     <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Flogin-workers.png?alt=media&token=b07f25aa-e723-4ce3-b3b4-b4caa3fe2ddc"  border="0" alt="4" /></td>
   </tr>
    <tr>
     <td>Register Recruiters</td>
       <td>Login Workers</td>  
   </tr>
   <tr>
-    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/login-recruiter.png?alt=media&token=2f2e5175-1598-49a9-bc1f-49bc6c209744" border="0" alt="3" /> </td>
-    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/landingAuth.png?alt=media&token=cee2a3d0-d37e-44d6-a3b2-241ecd541385" border="0" alt="3" /> </td>
+    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Flogin-recruiters.png?alt=media&token=2b1b2abd-b85b-46f7-b4cc-edd7bff519aa" border="0" alt="3" /> </td>
+    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Flanding-after-login.png?alt=media&token=b36a1889-1c78-4dbf-9f0c-1270c574e135" border="0" alt="3" /> </td>
   </tr>
    <tr>
       <td>Login Recruiters</td>   
       <td>Landing After Login</td>   
   </tr>
   <tr>
-    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/homeV1.png?alt=media&token=b03c5e42-ec98-4d89-8dfa-01e1fb999556" border="0" alt="3" /> </td>
-    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/profile-workers.png?alt=media&token=12a04d64-c806-4d6d-a2b8-a916613b067b" border="0" alt="3" /> </td>
+    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fhome-topjobs.png?alt=media&token=030e3fa3-4b08-4df2-a0eb-51c67314da03" border="0" alt="3" /> </td>
+    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fprofile-workers.png?alt=media&token=4595eb80-dac4-4838-9027-a3c82d46e03d" border="0" alt="3" /> </td>
   </tr>
    <tr>
       <td>Home Top Jobs</td>   
