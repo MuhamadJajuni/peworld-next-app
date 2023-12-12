@@ -141,6 +141,12 @@ FIREBASE_APPID =
       <td>Home Top Jobs</td>   
       <td>Profile Workers</td>   
   </tr>
+  <tr>
+    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fedit-profile-workers.png?alt=media&token=4375f175-e483-44fb-b3c0-f5afaceecf63" border="0" alt="3" /> </td>
+  </tr>
+   <tr>
+      <td>Edit Profile Workers</td>   
+  </tr>
 
   
  
