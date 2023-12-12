@@ -24,7 +24,7 @@ export default function LoginPage({ searchParams }: any) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const callbackUrl = searchParams?.callbackUrl || "/";
+  const callbackUrl = searchParams?.callbackUrl || "/home";
   const handleLogin = async (
     values: { email: any; password: any; role: any },
     { setSubmitting }: any
@@ -49,7 +49,7 @@ export default function LoginPage({ searchParams }: any) {
           setError("Pastikan Email, Password, dan Role sudah benar");
         }
       } else {
-        push(searchParams.callbackUrl || "/");
+        push(searchParams.callbackUrl || "/home");
         setIsLoading(false);
         toast.success("Login Berhasil");
       }

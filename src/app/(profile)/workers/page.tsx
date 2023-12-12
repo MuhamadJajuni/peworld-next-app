@@ -1,13 +1,11 @@
 "use client";
 
 import FooterLayout from "@/components/Footer";
-import lonceng from "img/bell-navbar.svg";
+import NavbarAuth from "@/components/NavbarAuth";
 import fotoLouis from "img/foto-louis-rounded.svg";
 import github from "img/github.svg";
 import gitlab from "img/gitlab.svg";
 import instagram from "img/instagram.svg";
-import logoPeworld from "img/logoPeworld.svg";
-import mailNavbar from "img/mail-navbar.svg";
 import email from "img/mail.svg";
 import foto1 from "img/porto-hape.svg";
 import foto2 from "img/porto-hape2.svg";
@@ -16,7 +14,6 @@ import foto4 from "img/porto-hape4.svg";
 import foto5 from "img/porto-hape5.svg";
 import foto6 from "img/porto-hape6.svg";
 import Image from "next/image";
-import Link from "next/link";
 import { SetStateAction, useState } from "react";
 
 export default function WorkersPage() {
@@ -28,46 +25,7 @@ export default function WorkersPage() {
 
   return (
     <main className="flex flex-col relative">
-      <nav className="py-3 px-3">
-        <ul className="flex justify-between items-center mx-5">
-          <li className="flex justify-start items-center">
-            <Image
-              src={logoPeworld}
-              alt="logo"
-              className="object-contain"
-              priority
-            />
-          </li>
-          <li className="flex justify-end items-center justify-items-center gap-5 mx-2">
-            <Image
-              src={lonceng}
-              alt="logo"
-              width={25}
-              height={25}
-              className="object-contain"
-              priority
-            />
-            <Image
-              src={mailNavbar}
-              alt="logo"
-              width={25}
-              height={25}
-              className="object-contain"
-              priority
-            />
-            <Link href="/workers">
-              <Image
-                src={fotoLouis}
-                alt="logo"
-                width={30}
-                height={30}
-                className="object-contain"
-                priority
-              />
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <NavbarAuth />
       <section className="container bg-[#5E50A1] h-64">
         <section className="grid grid-cols-2 h-full mt-[58px] gap-5">
           <div className="grid grid-flow-col ">
