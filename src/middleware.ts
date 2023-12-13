@@ -9,5 +9,4 @@ export function mainMiddleware(_request: NextRequest) {
 }
 
 export default withAuth(mainMiddleware, ["/home", "/login", "/register", '/workers/+edit*'
-, '/recruiters/:path*'
-, "/recruiters"])
+, '/recruiters/:path*'])
