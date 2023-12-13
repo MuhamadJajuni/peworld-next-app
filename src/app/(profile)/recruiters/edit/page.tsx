@@ -32,103 +32,99 @@ export default function WorkersPage() {
                         className="object-contain"
                         priority
                       />
-                      <p className="my-2 font-semibold">PT. Martabat Jaya Abadi</p>
-                      <p className="text-sm my-1 font-normal text-black">
-                      Financial
+                      <p className="my-2 font-semibold text-[22px] text-[#1F2A36]">
+                        PT. Martabat Jaya Abadi
                       </p>
-                      <p className="text-sm my-1  text-gray-400">
+                      <p className="text-sm my-1 font-normal text-[#1F2A36] text-[14px]">
+                        Financial
+                      </p>
+                      <p className="text-sm my-1  text-[#9EA0A5] text-[14px]">
                         Majalengka, Jawa Barat
                       </p>
-                      <div className="flex flex-col justify-center w-full gap-2 my-5 mt-10">
-                        <button className="bg-[#5E50A1] text-white">
-                          Edit
-                        </button>
-                        <button className="bg-white box-content shadow-lg border-purple-500">
-                          Simpan
-                        </button>
-                      </div>
                     </div>
+                  </div>
+                  <div className="flex flex-col justify-center w-full gap-3 my-5 mt-10">
+                    <button className="bg-[#5E50A1] text-white py-2 px-2 rounded font-bold text-[16px] leading-[20px]">
+                      Simpan
+                    </button>
+                    <button className="bg-white box-content py-2 px-2 border leading-[20px] font-bold border-[#5E50A1] text-[16px] text-[#5E50A1] rounded">
+                      Batal
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <section className="bg-white mr-24 rounded grid grid-flow-row gap-2 mx-2">
-            <div className="bg-white shadow my-2 gap-2 flex flex-col">
-              <form className="flex flex-col gap-2 my-2 justify-start">
-                <div className="mb-2 text-start text-xl mx-3 my-2">
-                  <h4 className="my-2 font-semibold">Data Diri</h4>
+            <div className="bg-white shadow py-2 my-1 gap-2 flex flex-col rounded">
+              <form className="flex flex-col gap-2 justify-start mx-4">
+                <div className="mb-2 text-start text-xl">
+                  <h4 className="font-semibold text-[22px] text-[#1F2A36] leading-[56px]">
+                    Data Diri
+                  </h4>
                   <hr className="border" />
                 </div>
-                <label className="flex flex-col mx-2 my-2">
+                <label className="flex flex-col my-2 mx-2 text-[12px] text-[#9EA0A5]">
                   Nama Perusahaan
                   <input
-                    className="border"
+                    className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
                     type="text"
                     placeholder="Masukan Nama Perusahaan"
                   />
                 </label>
-                <label className="flex flex-col mx-2 my-2">
+                <label className="flex flex-col my-2 mx-2 text-[12px] text-[#9EA0A5]">
                   Bidang
                   <input
-                    className="border"
+                    className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
                     type="text"
                     placeholder="Masukan bidang perusahaan ex : Financial"
                   />
                 </label>
-                <label className="flex flex-col mx-2 my-2">
-                    Kota
+                <label className="flex flex-col my-2 mx-2 text-[12px] text-[#9EA0A5]">
+                  Kota
                   <input
-                    className="border"
+                    className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
                     type="text"
                     placeholder="Masukan Kota"
                   />
                 </label>
-                <label className="flex flex-col mx-2 my-2">
-                  Tempat Kerja
-                  <input
-                    className="border"
-                    type="text"
-                    placeholder="Masukan Tempat Kerja"
-                  />
-                </label>
-                <label className="flex flex-col mx-2 my-2">
+                <label className="flex flex-col my-2 mx-2 text-[12px] text-[#9EA0A5]">
                   Deskripsi Singkat
                   <textarea
-                    className="border"
+                    className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
                     placeholder="Tuliskan Deskripsi Singkat"
                   ></textarea>
                 </label>
-                <label className="flex flex-col mx-2 my-2">
+                <label className="flex flex-col my-2 mx-2 text-[12px] text-[#9EA0A5]">
                   Email
                   <input
-                    className="border"
+                    className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
                     type="text"
                     placeholder="Masukan Email"
                   />
                 </label>
-                <label className="flex flex-col mx-2 my-2">
+                <label className="flex flex-col my-2 mx-2 text-[12px] text-[#9EA0A5]">
                   Instagram
                   <input
-                    className="border"
+                    className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
                     type="text"
-                    placeholder="Masukan Nama Instagram"
+                    placeholder="Masukan nama Instagram"
                   />
                 </label>
-                <label className="flex flex-col mx-2 my-2">
+                <label className="flex flex-col my-2 mx-2 text-[12px] text-[#9EA0A5]">
                   No Telepon
                   <input
-                    className="border"
+                    className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
                     type="text"
-                    placeholder="Masukan No Telepon"
+                    placeholder="Masukan nomor telepon"
                   />
                 </label>
-                <label className="flex flex-col mx-2 my-2">
+                <label className="flex flex-col my-2 mx-2 text-[12px] text-[#9EA0A5]">
                   Linkedin
                   <input
-                    className="border"
+                    className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
                     type="text"
-                    placeholder="Masukan Nama Linkedin"
+                    placeholder="Masukan nama Linkedin"
                   />
                 </label>
               </form>

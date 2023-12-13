@@ -11,11 +11,11 @@ export default function recruitersPage() {
   return (
     <main>
       <NavbarAuth />
-      <section className="container bg-slate-50 h-screen min-h-max">
+      <section className="container bg-slate-50">
         <div className="h-auto mx-40">
-          <div className="container h-auto grid grid-row-2 rounded">
+          <div className="container h-auto grid grid-row-2 rounded mb-10">
             <div className="bg-[#5E50A1] container h-36 mt-10 rounded"></div>
-            <div className="flex flex-col justify-center items-center shadow-md rounded mb-10">
+            <div className="flex flex-col justify-center items-center shadow-md rounded my-5">
               <div>
                 <div className="flex justify-center -top-20">
                   <Image
@@ -29,33 +29,32 @@ export default function recruitersPage() {
                 </div>
                 <div className="flex flex-col justify-center my-3 gap-1">
                   <div>
-                    <p className="font-semibold flex justify-center">
+                    <p className="font-semibold flex justify-center text-[#1F2A36] text-[22px]">
                       PT. Martabat Jaya Abadi
                     </p>
                   </div>
                   <div>
-                    <p className="flex justify-center">Financial</p>
+                    <p className="flex justify-center font-normal text-[#1F2A36] text-[14px]">Financial</p>
                   </div>
                   <div>
-                    <p className="flex justify-center">
+                    <p className="flex justify-center font-normal text-[#9EA0A5] text-[14px]">
                       Majalengka, Jawa Barat
                     </p>
                   </div>
-                  <div className="flex justify-center items-center">
-                    <p className="flex justify-center">
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Quis odit corrupti quas quibusdam, facilis odio!
+                  <div className="flex justify-center items-center my-5">
+                    <p className="flex justify-center font-normal text-[#9EA0A5] text-[14px] text-center mx-10">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.
                     </p>
                   </div>
                   <div className="flex justify-center">
-                    <button className="bg-[#5E50A1] w-24 h-10 text-white rounded">
+                    <button className="bg-[#5E50A1] w-50 h-50 py-2 px-3 text-white rounded">
                       Edit Profile
                     </button>
                   </div>
                 </div>
               </div>
               <div className="mb-10">
-                <div className="flex flex-col justify-center gap-2 my-2 mx-1">
+                <div className="grid grid-flow-row justify-center items-center place-content-center gap-2 my-2 mx-1">
                   <div className="flex justify-center">
                     <Image
                       src={Email}
@@ -65,7 +64,7 @@ export default function recruitersPage() {
                       className="object-contain"
                       priority
                     />
-                    <p className="ml-2 mx-1">martabatjaya@gmail.com</p>
+                    <p className="ml-2 mx-1 font-normal text-[#9EA0A5] text-[14px]">martabatjaya@gmail.com</p>
                   </div>
                   <div className="flex justify-center">
                     <Image
@@ -76,7 +75,7 @@ export default function recruitersPage() {
                       className="object-contain"
                       priority
                     />
-                    <p className="ml-2 mx-1">@martabatjaya</p>
+                    <p className="ml-2 mx-1 font-normal text-[#9EA0A5] text-[14px]">@martabatjaya</p>
                   </div>
                   <div className="flex justify-center">
                     <Image
@@ -87,7 +86,7 @@ export default function recruitersPage() {
                       className="object-contain"
                       priority
                     />
-                    <p className="ml-2 mx-1">08123456789</p>
+                    <p className="ml-2 mx-1 font-normal text-[#9EA0A5] text-[14px]">08123456789</p>
                   </div>
                   <div className="flex justify-center">
                     <Image
@@ -98,15 +97,15 @@ export default function recruitersPage() {
                       className="object-contain"
                       priority
                     />
-                    <p className="ml-2 mx-1">@martabatjaya</p>
+                    <p className="ml-2 mx-1 font-normal text-[#9EA0A5] text-[14px]">@martabatjaya</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <FooterLayout />
       </section>
-      <FooterLayout />
     </main>
   );
 }
