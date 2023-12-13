@@ -111,43 +111,42 @@ FIREBASE_APPID =
  <tr>
     <td> <img width="400px" src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Flanding-before-login.png?alt=media&token=b9f2232b-277c-4bbd-b636-1e8944b44dee"  border="0"  alt="2" /></td>
     <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fregister-workers.png?alt=media&token=34379a18-c207-43e9-a3cd-c5f870a44fac" border="0" alt="3" /> </td>
+    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fregister-recruiters.png?alt=media&token=c6bcc8c1-6ec6-444b-893d-4cb0ba8fd374" border="0" alt="3" /> </td>
   </tr>
    <tr>
      <td>Landing Page Before Login</td>
      <td>Register Workers</td>
+     <td>Register Recruiters</td>
   </tr>
 
   <tr>
-   <td><img width="400px" src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fregister-recruiters.png?alt=media&token=c6bcc8c1-6ec6-444b-893d-4cb0ba8fd374" border="0" alt="1" /></td>
+   <td><img width="400px" src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Flogin-workers.png?alt=media&token=b07f25aa-e723-4ce3-b3b4-b4caa3fe2ddc" border="0" alt="1" /></td>
      <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Flogin-workers.png?alt=media&token=b07f25aa-e723-4ce3-b3b4-b4caa3fe2ddc"  border="0" alt="4" /></td>
+     <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Flanding-after-login.png?alt=media&token=b36a1889-1c78-4dbf-9f0c-1270c574e135"  border="0" alt="4" /></td>
   </tr>
    <tr>
-    <td>Register Recruiters</td>
       <td>Login Workers</td>  
-  </tr>
-  <tr>
-    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Flogin-recruiters.png?alt=media&token=2b1b2abd-b85b-46f7-b4cc-edd7bff519aa" border="0" alt="3" /> </td>
-    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Flanding-after-login.png?alt=media&token=b36a1889-1c78-4dbf-9f0c-1270c574e135" border="0" alt="3" /> </td>
-  </tr>
-   <tr>
-      <td>Login Recruiters</td>   
-      <td>Landing After Login</td>   
+      <td>Login Recruiters</td>  
+    <td>Landing After Login</td>
   </tr>
   <tr>
     <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Ftopjobs-v1.png?alt=media&token=5dc3e675-21b6-4106-9329-ab9fe3ab4b65" border="0" alt="3" /> </td>
     <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fprofile-workersv1.png?alt=media&token=8f767d4a-d019-4438-ba50-349a70dae8e8" border="0" alt="3" /> </td>
+    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fedit-profile-workers.png?alt=media&token=4375f175-e483-44fb-b3c0-f5afaceecf63" border="0" alt="3" /> </td>
   </tr>
    <tr>
       <td>Home Top Jobs</td>   
       <td>Profile Workers</td>   
-  </tr>
-  <tr>
-    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fedit-profile-workers.png?alt=media&token=4375f175-e483-44fb-b3c0-f5afaceecf63" border="0" alt="3" /> </td>
-  </tr>
-   <tr>
       <td>Edit Profile Workers</td>   
   </tr>
-
+  <tr>
+    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fdetail-profile-recruiters.png?alt=media&token=0307908e-be09-4c60-99ad-60799bb4c9a7" border="0" alt="3" /> </td>
+    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fedit-profile-recruiters.png?alt=media&token=e3bb7e3d-5ab3-47d7-b357-a009291a8c4f" border="0" alt="3" /> </td>
+  </tr>
+   <tr>
+      <td>Profile Recruiters</td>   
+      <td>Edit Profile Recruiters</td>   
+  </tr>
   
  
 </table>
