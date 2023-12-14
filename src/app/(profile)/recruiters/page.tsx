@@ -14,7 +14,7 @@ export default function recruitersPage() {
       <section className="container bg-slate-50">
         <div className="h-auto mx-40">
           <div className="container h-auto grid grid-row-2 rounded mb-10">
-            <div className="bg-[#5E50A1] container h-36 mt-10 rounded"></div>
+            <div className="bg-[#5E50A1] container h-36 mt-7 rounded"></div>
             <div className="flex flex-col justify-center items-center shadow-md rounded my-5">
               <div>
                 <div className="flex justify-center -top-20">
@@ -34,11 +34,11 @@ export default function recruitersPage() {
                     </p>
                   </div>
                   <div>
-                    <p className="flex justify-center font-normal text-[#1F2A36] text-[14px]">Financial</p>
+                    <p className="flex justify-center font-normal text-[#1F2A36] text-[14px]">Financial Technology</p>
                   </div>
                   <div>
                     <p className="flex justify-center font-normal text-[#9EA0A5] text-[14px]">
-                      Majalengka, Jawa Barat
+                      Bandung, Jawa Barat
                     </p>
                   </div>
                   <div className="flex justify-center items-center my-5">
