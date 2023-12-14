@@ -140,7 +140,7 @@ FIREBASE_APPID =
       <td>Edit Profile Workers</td>   
   </tr>
   <tr>
-    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fdetail-profile-recruiters.png?alt=media&token=0307908e-be09-4c60-99ad-60799bb4c9a7" border="0" alt="3" /> </td>
+    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fdetail-profile-recruiters.png?alt=media&token=9536ae83-22bd-4fe6-8251-04fa2e0f4a3e" border="0" alt="3" /> </td>
     <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fedit-profile-recruiters.png?alt=media&token=d6cdd941-85b2-47bb-aed7-26cf56d1ea77" border="0" alt="3" /> </td>
   </tr>
    <tr>
