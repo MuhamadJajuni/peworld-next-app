@@ -142,10 +142,12 @@ FIREBASE_APPID =
   <tr>
     <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fdetail-profile-recruiters.png?alt=media&token=9536ae83-22bd-4fe6-8251-04fa2e0f4a3e" border="0" alt="3" /> </td>
     <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fedit-profile-recruiters.png?alt=media&token=d6cdd941-85b2-47bb-aed7-26cf56d1ea77" border="0" alt="3" /> </td>
+    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Frecruiters-page-hire.png?alt=media&token=c5cb7ea3-4e81-4f34-a5a5-8275081a8dff" border="0" alt="3" /> </td>
   </tr>
    <tr>
       <td>Profile Recruiters</td>   
       <td>Edit Profile Recruiters</td>   
+      <td>Hire Page Recruiters</td>   
   </tr>
   
  
