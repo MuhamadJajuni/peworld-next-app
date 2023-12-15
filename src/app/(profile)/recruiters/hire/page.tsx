@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import NavbarAuth from "@/components/NavbarAuth";
 import FooterLayout from "@/components/Footer";
+import NavbarAuth from "@/components/NavbarAuth";
 import fotoLouis from "img/TomLouis.svg";
 import Image from "next/image";
 export default function HirePage() {
@@ -124,7 +124,9 @@ export default function HirePage() {
                 ></textarea>
               </label>
               <div className="flex justify-center my-5 mb-20">
-                <button className="bg-[#FBB017] w-full rounded text-white font-bold text-[16px] leading-[20px] py-2 px-2">Hire</button>
+                <button className="bg-[#FBB017] w-full rounded text-white font-bold text-[16px] leading-[20px] py-2 px-2">
+                  Hire
+                </button>
               </div>
             </form>
           </div>

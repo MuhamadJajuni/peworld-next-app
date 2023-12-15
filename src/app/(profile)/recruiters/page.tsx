@@ -1,12 +1,12 @@
 "use client";
 import FooterLayout from "@/components/Footer";
-import Image from "next/image";
-import fotoLouis from "img/TomLouis.svg";
 import NavbarAuth from "@/components/NavbarAuth";
+import fotoLouis from "img/TomLouis.svg";
 import Instagram from "img/instagram.svg";
 import Linkedin from "img/linkedin 1.svg";
-import Telepon from "img/phone 1.svg";
 import Email from "img/mail.svg";
+import Telepon from "img/phone 1.svg";
+import Image from "next/image";
 export default function recruitersPage() {
   return (
     <main>
@@ -34,7 +34,9 @@ export default function recruitersPage() {
                     </p>
                   </div>
                   <div>
-                    <p className="flex justify-center font-normal text-[#1F2A36] text-[14px]">Financial Technology</p>
+                    <p className="flex justify-center font-normal text-[#1F2A36] text-[14px]">
+                      Financial Technology
+                    </p>
                   </div>
                   <div>
                     <p className="flex justify-center font-normal text-[#9EA0A5] text-[14px]">
@@ -43,7 +45,9 @@ export default function recruitersPage() {
                   </div>
                   <div className="flex justify-center items-center my-5">
                     <p className="flex justify-center font-normal text-[#9EA0A5] text-[14px] text-center mx-10">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Vestibulum erat orci, mollis nec gravida sed, ornare quis
+                      urna. Curabitur eu lacus fringilla, vestibulum risus at.
                     </p>
                   </div>
                   <div className="flex justify-center">
@@ -64,7 +68,9 @@ export default function recruitersPage() {
                       className="object-contain"
                       priority
                     />
-                    <p className="ml-2 mx-1 font-normal text-[#9EA0A5] text-[14px]">martabatjaya@gmail.com</p>
+                    <p className="ml-2 mx-1 font-normal text-[#9EA0A5] text-[14px]">
+                      martabatjaya@gmail.com
+                    </p>
                   </div>
                   <div className="flex justify-center">
                     <Image
@@ -75,7 +81,9 @@ export default function recruitersPage() {
                       className="object-contain"
                       priority
                     />
-                    <p className="ml-2 mx-1 font-normal text-[#9EA0A5] text-[14px]">@martabatjaya</p>
+                    <p className="ml-2 mx-1 font-normal text-[#9EA0A5] text-[14px]">
+                      @martabatjaya
+                    </p>
                   </div>
                   <div className="flex justify-center">
                     <Image
@@ -86,7 +94,9 @@ export default function recruitersPage() {
                       className="object-contain"
                       priority
                     />
-                    <p className="ml-2 mx-1 font-normal text-[#9EA0A5] text-[14px]">08123456789</p>
+                    <p className="ml-2 mx-1 font-normal text-[#9EA0A5] text-[14px]">
+                      08123456789
+                    </p>
                   </div>
                   <div className="flex justify-center">
                     <Image
@@ -97,7 +107,9 @@ export default function recruitersPage() {
                       className="object-contain"
                       priority
                     />
-                    <p className="ml-2 mx-1 font-normal text-[#9EA0A5] text-[14px]">@martabatjaya</p>
+                    <p className="ml-2 mx-1 font-normal text-[#9EA0A5] text-[14px]">
+                      @martabatjaya
+                    </p>
                   </div>
                 </div>
               </div>

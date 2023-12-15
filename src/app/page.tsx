@@ -150,7 +150,9 @@ export default function Home() {
         </section>
       </section>
       <section className="grid grid-cols-1">
-        <section className="bg-white h-60 md:h-80 lg:h-96">01</section>
+        <section className="bg-white h-60 md:h-80 lg:h-96">
+          
+        </section>
       </section>
       <section className="grid grid-cols-1 mx-5 my-5 mb-[100px] mt-[82px]">
         <section className="flex h-[227px] mx-5 md:mx-10 lg:mx-32">

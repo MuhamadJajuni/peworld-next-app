@@ -20,7 +20,7 @@ export default function WorkersPage() {
         <section className="grid grid-cols-2 h-full mt-[58px] gap-5">
           <div className="grid grid-flow-row ">
             <div className="col-start-2 col-span-3 mr-24">
-            <div className="grid grid-cols-1 h-64">
+              <div className="grid grid-cols-1 h-64">
                 <div className="col-start-1 col-span-4 flex flex-col h-auto bg-white rounded ml-20 mx-10 shadow">
                   <div className="grid grid-rows-1 grid-flow-col gap-2 justify-center items-center mt-5 mx-5">
                     <div className="flex flex-col justify-center items-center">
@@ -33,10 +33,10 @@ export default function WorkersPage() {
                         priority
                       />
                       <p className="flex justify-center my-2 font-semibold text-[22px] text-[#1F2A36]">
-                       PT. Martabat Jaya Abadi
+                        PT. Martabat Jaya Abadi
                       </p>
                       <p className="flex justify-center my-2 font-normal text-[#1F2A36] text-[14px]">
-                      Financial Technology
+                        Financial Technology
                       </p>
                       <p className="flex justify-center my-2 font-normal text-[#9EA0A5] text-[14px]">
                         Bandung, Jawa Barat

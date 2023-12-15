@@ -114,7 +114,7 @@ FIREBASE_APPID =
     <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fregister-recruiters.png?alt=media&token=c6bcc8c1-6ec6-444b-893d-4cb0ba8fd374" border="0" alt="3" /> </td>
   </tr>
    <tr>
-     <td>Landing Page Before Login</td>
+     <td>Landing Before Login</td>
      <td>Register Workers</td>
      <td>Register Recruiters</td>
   </tr>
@@ -131,24 +131,30 @@ FIREBASE_APPID =
   </tr>
   <tr>
     <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Ftopjobs-v1.png?alt=media&token=5dc3e675-21b6-4106-9329-ab9fe3ab4b65" border="0" alt="3" /> </td>
-    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fprofile-workersv1.png?alt=media&token=8f767d4a-d019-4438-ba50-349a70dae8e8" border="0" alt="3" /> </td>
-    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fedit-profile-workers.png?alt=media&token=41905325-0a86-40f7-8fdd-13c0eb461a5b" border="0" alt="3" /> </td>
+    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fdetail-workers-portofolio.png?alt=media&token=bec0088d-580c-40bb-ba4d-82d76ac6d8ed" border="0" alt="3" /> </td>
+    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fdetail-workers-pengalaman.png?alt=media&token=5b692044-c641-4408-9c74-8f5cf79f0052" border="0" alt="3" /> </td>
   </tr>
    <tr>
       <td>Home Top Jobs</td>   
-      <td>Profile Workers</td>   
-      <td>Edit Profile Workers</td>   
+      <td>Detail Workers Portoflio</td>   
+      <td>Detail Workers Pengalaman</td>   
   </tr>
   <tr>
+    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fedit-profile-workers.png?alt=media&token=41905325-0a86-40f7-8fdd-13c0eb461a5b" border="0" alt="3" /> </td>
     <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fdetail-profile-recruiters.png?alt=media&token=9536ae83-22bd-4fe6-8251-04fa2e0f4a3e" border="0" alt="3" /> </td>
     <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Fedit-profile-recruiters.png?alt=media&token=d6cdd941-85b2-47bb-aed7-26cf56d1ea77" border="0" alt="3" /> </td>
-    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Frecruiters-page-hire.png?alt=media&token=c5cb7ea3-4e81-4f34-a5a5-8275081a8dff" border="0" alt="3" /> </td>
   </tr>
    <tr>
+      <td>Edit Profile Workers</td>   
       <td>Profile Recruiters</td>   
-      <td>Edit Profile Recruiters</td>   
-      <td>Hire Page Recruiters</td>   
+      <td>Edit Profile Recruiters</td>
   </tr>
+  <tr>
+    <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Frecruiters-page-hire.png?alt=media&token=c5cb7ea3-4e81-4f34-a5a5-8275081a8dff" border="0" alt="3" /> </td>
+   <tr>
+      <td>Hire Page Recruiter</td>
+  </tr>
+  
   
  
 </table>
