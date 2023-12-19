@@ -152,7 +152,7 @@ FIREBASE_APPID =
   <tr>
     <td><img width="400px"  src="https://firebasestorage.googleapis.com/v0/b/nextjs-14-app-peworld.appspot.com/o/foto%20peworld%2Frecruiters-page-hire.png?alt=media&token=c5cb7ea3-4e81-4f34-a5a5-8275081a8dff" border="0" alt="3" /> </td>
    <tr>
-      <td>Hire Page Recruiter</td>
+      <td>Hire Page Recruiters</td>
   </tr>
   
   
