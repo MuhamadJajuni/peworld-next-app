@@ -1,5 +1,5 @@
-import { login } from '@/lib/service';
 import { compare } from 'bcrypt';
+import { login } from '@/lib/service';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
@@ -37,13 +37,14 @@ const authOptions: NextAuthOptions = {
             const passwordConfirm = await compare(password, user.password);
 
             if (passwordConfirm && user.role === role) {
-              return user;
+              // Include userId in the token
+              return { ...user, userId: user.id };
             }
           }
 
           return null;
         } catch (error) {
-          throw new Error("gagal login");
+          throw new Error('Failed to login');
         }
       },
     }),
@@ -51,14 +52,19 @@ const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, account, user }: any) {
       if (account?.provider === 'credentials') {
+        // Include userId in the token
+        token.userId = user.userId;
         token.email = user.email;
         token.name = user.name;
         token.role = user.role;
       }
       return token;
     },
-
     async session({ session, token }: any) {
+      if ('userId' in token) {
+        // Include userId in the session
+        session.user.userId = token.userId;
+      }
       if ('email' in token) {
         session.user.email = token.email;
       }
