@@ -1,8 +1,39 @@
+import { useState } from "react"
+
 export default function FormExperience() {
+
+  const [posisi, setPosisi] = useState("")
+  const [namaPerusahaan, setNamaPerusahaan] = useState("")
+  const [mulai, setMulai] = useState("")
+  const [deskripsi, setDeskripsi] = useState("")
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    const res = await fetch("/api/workers/createExperience", {
+      method: "POST",
+      body: JSON.stringify({
+        posisi,
+        namaPerusahaan,
+        mulai,
+        deskripsi
+      }),
+    });
+
+    if (res.ok) {
+      e.target.reset();
+      console.log("data submitted");
+    } else if (res.status === 400) {
+      console.log("something went wrong");
+    } else {
+      console.log("kesalahan");
+    }
+  };
+
+
     return (
         <div className="bg-white shadow my-2 gap-2 flex flex-col rounded">
         {/* form pengalaman kerja */}
-        <form className="flex flex-col gap-2 my-2 justify-start rounded mx-4">
+        <form className="flex flex-col gap-2 my-2 justify-start rounded mx-4" onSubmit={handleSubmit}>
           <div className="mb-2 text-start text-xl">
             <h4 className="font-semibold text-[22px] text-[#1F2A36] leading-[56px]">
               Pengalaman Kerja
@@ -14,6 +45,8 @@ export default function FormExperience() {
             <input
               className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
               type="text"
+              value={posisi}
+              onChange={(e) => setPosisi(e.target.value)}
               placeholder="Masukan Posisi"
             />
           </label>
@@ -25,6 +58,8 @@ export default function FormExperience() {
                 <input
                   className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
                   type="text"
+                  value={namaPerusahaan}
+                  onChange={(e) => setNamaPerusahaan(e.target.value)}
                   placeholder="Masukan Mulai"
                 />
               </label>
@@ -35,6 +70,8 @@ export default function FormExperience() {
                 <input
                   className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
                   type="text"
+                  value={mulai}
+                  onChange={(e) => setMulai(e.target.value)}
                   placeholder="Masukan Sampai"
                 />
               </label>
@@ -46,6 +83,8 @@ export default function FormExperience() {
                 <textarea
                   className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
                   placeholder="Tuliskan Deskripsi Singkat"
+                  value={deskripsi}
+                  onChange={(e) => setDeskripsi(e.target.value)}
                 ></textarea>
               </label>
             </div>

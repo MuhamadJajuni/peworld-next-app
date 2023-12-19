@@ -49,26 +49,106 @@ export async function register(
     }
 }
 
-
 export async function createProfileRecruiters(data: {
-    namePerusahaan: string,
-    bidang: string,
-    kota: string,
-    deskripsiSingkat: string,
-    email: string,
-    noTelepon: string,
-    linkedin: string,
-    instagram: string
+    namePerusahaan: string;
+    bidang: string;
+    kota: string;
+    deskripsiSingkat: string;
+    email: string;
+    noTelepon: string;
+    linkedin: string;
+    instagram: string;
   }) {
     try {
-      // Tambahkan data ke Firestore tanpa pengecekan email
-      await addDoc(collection(firestore, 'experience'), data);
+      const userId = '5auBtoVP11btM9OibRFd';
+  
+      // Use 'collection' for the 'experience' subcollection
+      const experienceCollectionRef = collection(doc(firestore, 'users', userId), 'experience');
+  
+      // Add data to the 'experience' subcollection under the specified user ID
+      await addDoc(experienceCollectionRef, data);
+  
       return { status: true, statusCode: 200, message: 'Register Success' };
     } catch (error) {
       console.error('Error adding document: ', error);
-      return { status: false, statusCode: 400, message: 'Something went wrong' };
+      return { status: false, statusCode: 400, message: 'Something went wrong', error: error.message };
     }
-  }
+}
+export async function createPortofolio(data: {
+    skill: string,
+  }) {
+    try {
+      const userId = '5auBtoVP11btM9OibRFd';
+  
+      // Use 'collection' for the 'experience' subcollection
+      const experienceCollectionRef = collection(doc(firestore, 'users', userId), 'portofolio');
+  
+      // Add data to the 'experience' subcollection under the specified user ID
+      await addDoc(experienceCollectionRef, data);
+  
+      return { status: true, statusCode: 200, message: 'Create Portofolio Success' };
+    } catch (error) {
+      console.error('Error adding document: ', error);
+      return { status: false, statusCode: 400, message: 'Something went wrong', error: error.message };
+    }
+}
+export async function createExperience(data: {
+    posisi: string,
+    namaPerusahaan: string,
+    mulai: string,
+    deskripsi: string
+  }) {
+    try {
+      const userId = '5auBtoVP11btM9OibRFd';
+  
+      // Use 'collection' for the 'experience' subcollection
+      const experienceCollectionRef = collection(doc(firestore, 'users', userId), 'experience');
+  
+      // Add data to the 'experience' subcollection under the specified user ID
+      await addDoc(experienceCollectionRef, data);
+  
+      return { status: true, statusCode: 200, message: 'Create Skill Success' };
+    } catch (error) {
+      console.error('Error adding document: ', error);
+      return { status: false, statusCode: 400, message: 'Something went wrong', error: error.message };
+    }
+}
+export async function createBiodata(data: {
+    skill: string,
+  }) {
+    try {
+      const userId = '5auBtoVP11btM9OibRFd';
+  
+      // Use 'collection' for the 'experience' subcollection
+      const experienceCollectionRef = collection(doc(firestore, 'users', userId), 'data_diri');
+  
+      // Add data to the 'experience' subcollection under the specified user ID
+      await addDoc(experienceCollectionRef, data);
+  
+      return { status: true, statusCode: 200, message: 'Create Skill Success' };
+    } catch (error) {
+      console.error('Error adding document: ', error);
+      return { status: false, statusCode: 400, message: 'Something went wrong', error: error.message };
+    }
+}
+export async function createSkill(data: {
+    skill: string,
+  }) {
+    try {
+      const userId = '5auBtoVP11btM9OibRFd';
+  
+      // Use 'collection' for the 'experience' subcollection
+      const experienceCollectionRef = collection(doc(firestore, 'users', userId), 'skill');
+  
+      // Add data to the 'experience' subcollection under the specified user ID
+      await addDoc(experienceCollectionRef, data);
+  
+      return { status: true, statusCode: 200, message: 'Create Skill Success' };
+    } catch (error) {
+      console.error('Error adding document: ', error);
+      return { status: false, statusCode: 400, message: 'Something went wrong', error: error.message };
+    }
+}
 
 export async function login(data: { email: string }) {
     const q = query(
