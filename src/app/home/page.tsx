@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 "use client";
 
-import FooterLayout from "@/components/Footer";
-import NavbarAuth from "@/components/NavbarAuth";
+import FooterLayout from "@/@components/Footer";
+import NavbarAuth from "@/@components/NavbarAuth";
 import foto from "img/TomLouis.svg";
 import maps from "img/maps.svg";
 import Image from "next/image";

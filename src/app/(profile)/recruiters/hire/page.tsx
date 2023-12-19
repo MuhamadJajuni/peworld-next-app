@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import FooterLayout from "@/components/Footer";
-import NavbarAuth from "@/components/NavbarAuth";
+import FooterLayout from "cmp/Footer";
+import NavbarAuth from "cmp/NavbarAuth";
 import fotoLouis from "img/TomLouis.svg";
 import Image from "next/image";
 export default function HirePage() {

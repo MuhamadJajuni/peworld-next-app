@@ -1,5 +1,5 @@
-import FooterLayout from "cmp/Footer";
-import NavbarLayout from "cmp/Navbar";
+import FooterLayout from "@/@components/Footer";
+import NavbarLayout from "@/@components/Navbar";
 import ceklisOrange from "img/ceklisOrange.svg";
 import ceklisPurple from "img/ceklisPurple.svg";
 import hero1 from "img/hero1.svg";

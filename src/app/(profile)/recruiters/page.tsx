@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import FooterLayout from "@/components/Footer";
-import NavbarAuth from "@/components/NavbarAuth";
+import FooterLayout from "cmp/Footer";
+import NavbarAuth from "cmp/NavbarAuth";
 import fotoLouis from "img/TomLouis.svg";
 import Instagram from "img/instagram.svg";
 import Linkedin from "img/linkedin 1.svg";
 import Email from "img/mail.svg";
 import Telepon from "img/phone 1.svg";
 import Image from "next/image";
+import { useEffect, useState } from 'react';
 
 interface Company {
   id: string;

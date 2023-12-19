@@ -1,7 +1,7 @@
 "use client";
 
-import FooterLayout from "@/components/Footer";
-import NavbarAuth from "@/components/NavbarAuth";
+import FooterLayout from "cmp/Footer";
+import NavbarAuth from "cmp/NavbarAuth";
 import fotoLouis from "img/foto-louis-rounded.svg";
 import github from "img/github.svg";
 import gitlab from "img/gitlab.svg";
