@@ -4,10 +4,54 @@ import FooterLayout from "@/components/Footer";
 import NavbarAuth from "@/components/NavbarAuth";
 import fotoLouis from "img/foto-louis-rounded.svg";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { SetStateAction, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function WorkersPage() {
   const [activeTab, setActiveTab] = useState(1);
+  const [error, setError] = useState("");
+  const { push } = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const [namePerusahaan, setNamePerusahaan] = useState("");
+  const [bidang, setBidang] = useState("");
+  const [kota, setKota] = useState("");
+  const [deskripsiSingkat, setDeskripsiSingkat] = useState("");
+  const [email, setEmail] = useState("");
+  const [noTelepon, setNoTelepon] = useState("");
+  const [linkedin, setLinkedin] = useState("");
+  const [instagram, setInstagram] = useState("");
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    const res = await fetch("/api/recruiters/edit", {
+      method: "POST",
+      body: JSON.stringify({
+        namePerusahaan,
+        bidang,
+        kota,
+        deskripsiSingkat,
+        email,
+        noTelepon,
+        linkedin,
+        instagram,
+      }),
+    });
+
+    if (res.ok) {
+      e.target.reset();
+      setIsLoading(false);
+      push("/recruiters");
+      toast.success("Data has been updated");
+    } else if (res.status === 400) {
+      setError("Something ");
+      setIsLoading(false);
+      toast.error("Something went wrong");
+    } else {
+      setIsLoading(false);
+      toast.error("Gagal Submit");
+    }
+  };
 
   const handleTabChange = (tabIndex: SetStateAction<number>) => {
     setActiveTab(tabIndex);
@@ -57,7 +101,10 @@ export default function WorkersPage() {
           </div>
           <section className="bg-white mr-24 rounded grid grid-flow-row gap-2 mx-2 mb-20">
             <div className="bg-white shadow py-2 my-1 gap-2 flex flex-col rounded">
-              <form className="flex flex-col gap-2 justify-start mx-4">
+              <form
+                className="flex flex-col gap-2 justify-start mx-4"
+                onSubmit={handleSubmit}
+              >
                 <div className="mb-2 text-start text-xl">
                   <h4 className="font-semibold text-[22px] text-[#1F2A36] leading-[56px]">
                     Data Diri
@@ -69,6 +116,8 @@ export default function WorkersPage() {
                   <input
                     className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
                     type="text"
+                    value={namePerusahaan}
+                    onChange={(e) => setNamePerusahaan(e.target.value)}
                     placeholder="Masukan Nama Perusahaan"
                   />
                 </label>
@@ -76,7 +125,8 @@ export default function WorkersPage() {
                   Bidang
                   <input
                     className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
-                    type="text"
+                    value={bidang}
+                    onChange={(e) => setBidang(e.target.value)}
                     placeholder="Masukan bidang perusahaan ex : Financial"
                   />
                 </label>
@@ -85,6 +135,8 @@ export default function WorkersPage() {
                   <input
                     className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
                     type="text"
+                    value={kota}
+                    onChange={(e) => setKota(e.target.value)}
                     placeholder="Masukan Kota"
                   />
                 </label>
@@ -92,6 +144,8 @@ export default function WorkersPage() {
                   Deskripsi Singkat
                   <textarea
                     className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
+                    value={deskripsiSingkat}
+                    onChange={(e) => setDeskripsiSingkat(e.target.value)}
                     placeholder="Tuliskan Deskripsi Singkat"
                   ></textarea>
                 </label>
@@ -100,6 +154,8 @@ export default function WorkersPage() {
                   <input
                     className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
                     type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="Masukan Email"
                   />
                 </label>
@@ -108,6 +164,8 @@ export default function WorkersPage() {
                   <input
                     className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
                     type="text"
+                    value={instagram}
+                    onChange={(e) => setInstagram(e.target.value)}
                     placeholder="Masukan nama Instagram"
                   />
                 </label>
@@ -116,6 +174,8 @@ export default function WorkersPage() {
                   <input
                     className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
                     type="text"
+                    value={noTelepon}
+                    onChange={(e) => setNoTelepon(e.target.value)}
                     placeholder="Masukan nomor telepon"
                   />
                 </label>
@@ -124,9 +184,14 @@ export default function WorkersPage() {
                   <input
                     className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
                     type="text"
+                    value={linkedin}
+                    onChange={(e) => setLinkedin(e.target.value)}
                     placeholder="Masukan nama Linkedin"
                   />
                 </label>
+                <button className="bg-[#5E50A1] w-full rounded py-2 text-white">
+                  Simpan
+                </button>
               </form>
             </div>
           </section>
@@ -135,6 +200,7 @@ export default function WorkersPage() {
           </div>
         </section>
       </section>
+      <ToastContainer />
     </main>
   );
 }

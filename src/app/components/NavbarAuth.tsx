@@ -105,7 +105,6 @@ const Greeting: React.FC<GreetingProps> = ({ session }) => {
 
 const NavbarAuth: React.FC = () => {
   const { data: session, status }: { data: any; status: string } = useSession();
-  console.log(session);
 
   return (
     <nav className="flex py-1 px-1 mx-3 bg-white justify-between">

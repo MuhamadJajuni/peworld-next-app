@@ -95,7 +95,7 @@ export default function Home() {
           </div>
           <div className="flex justify-end">
             <Link href={`/workers/${worker.username}`}>
-              <button className="bg-[#5E50A1] text-white rounded py-2 text-sm">
+              <button className="bg-[#5E50A1] text-white rounded py-2 px-4 text-sm">
                 Lihat Profile
               </button>
             </Link>

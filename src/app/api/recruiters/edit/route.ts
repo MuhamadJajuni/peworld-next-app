@@ -1,4 +1,4 @@
-import { register } from "@/lib/service";
+import { createProfileRecruiters } from "@/lib/service";
 
 import { NextRequest, NextResponse } from "next/server";
 
@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
     try {
         const req = await request.json();
-        const res = await register(req);
+        const res = await createProfileRecruiters(req);
         return NextResponse.json(
             { status: res.status, message: res.message },
             { status: res.statusCode }
@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
         console.error("Error during POST request:", error);
         return NextResponse.json(
             { status: "error", message: "Internal Server Error" },
-            { status: 500 }
+            { status: 400 }
         );
     }
 }

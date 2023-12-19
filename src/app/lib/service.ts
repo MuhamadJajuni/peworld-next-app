@@ -49,6 +49,27 @@ export async function register(
     }
 }
 
+
+export async function createProfileRecruiters(data: {
+    namePerusahaan: string,
+    bidang: string,
+    kota: string,
+    deskripsiSingkat: string,
+    email: string,
+    noTelepon: string,
+    linkedin: string,
+    instagram: string
+  }) {
+    try {
+      // Tambahkan data ke Firestore tanpa pengecekan email
+      await addDoc(collection(firestore, 'experience'), data);
+      return { status: true, statusCode: 200, message: 'Register Success' };
+    } catch (error) {
+      console.error('Error adding document: ', error);
+      return { status: false, statusCode: 400, message: 'Something went wrong' };
+    }
+  }
+
 export async function login(data: { email: string }) {
     const q = query(
         collection(firestore, 'users'),

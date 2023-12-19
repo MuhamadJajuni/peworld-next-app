@@ -7,11 +7,75 @@ import Image from "next/image";
 import { SetStateAction, useState } from "react";
 
 export default function WorkersPage() {
-  const [activeTab, setActiveTab] = useState(1);
+  const [activeTab] = useState(1);
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState('');
+  import React, { useState } from 'react';
 
-  const handleTabChange = (tabIndex: SetStateAction<number>) => {
-    setActiveTab(tabIndex);
+const MyProfileForm = () => {
+  const [personalData, setPersonalData] = useState({
+    namaLengkap: '',
+    jobDesk: '',
+    domisili: '',
+    tempatKerja: '',
+    deskripsi: '',
+  });
+
+  const [skill, setSkill] = useState('');
+
+  const [workExperience, setWorkExperience] = useState({
+    posisi: '',
+    namaPerusahaan: '',
+    bulanTahun: '',
+    deskripsiPekerjaan: '',
+  });
+
+  const [portfolio, setPortfolio] = useState({
+    namaAplikasi: '',
+    linkRepository: '',
+    typePortofolio: 'aplikasiMobile',
+    file: null,
+  });
+
+  const handlePersonalDataChange = (e) => {
+    const { name, value } = e.target;
+    setPersonalData({
+      ...personalData,
+      [name]: value,
+    });
   };
+
+  const handleSkillChange = (e) => {
+    setSkill(e.target.value);
+  };
+
+  const handleWorkExperienceChange = (e) => {
+    const { name, value } = e.target;
+    setWorkExperience({
+      ...workExperience,
+      [name]: value,
+    });
+  };
+
+  const handlePortfolioChange = (e) => {
+    const { name, value, type } = e.target;
+    setPortfolio({
+      ...portfolio,
+      [name]: type === 'file' ? e.target.files[0] : value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Lakukan sesuatu dengan data formulir, misalnya kirim ke server atau tampilkan di konsol
+    console.log({
+      personalData,
+      skill,
+      workExperience,
+      portfolio,
+    });
+  };
+
 
   return (
     <main className="flex flex-col relative">
@@ -60,6 +124,7 @@ export default function WorkersPage() {
           </div>
           <section className="bg-white mr-24 mb-20 grid grid-flow-row gap-2 mx-2 rounded">
             <div className="bg-white shadow my-2 gap-2 flex flex-col rounded">
+              {/* form data diri */}
               <form className="flex flex-col gap-2 justify-start mx-4">
                 <div className="mb-2 text-start text-xl">
                   <h4 className="font-semibold text-[22px] text-[#1F2A36] leading-[56px]">
@@ -107,8 +172,10 @@ export default function WorkersPage() {
                   ></textarea>
                 </label>
               </form>
+              {/* end form */}
             </div>
             <div className="bg-white shadow my-2 gap-2 flex flex-col rounded">
+              {/* form skill */}
               <form className="flex flex-col gap-2 my-2 justify-start mx-4">
                 <div className="mb-2 text-start text-xl">
                   <h4 className="font-semibold text-[22px] text-[#1F2A36] leading-[56px]">
@@ -133,8 +200,10 @@ export default function WorkersPage() {
                   </div>
                 </div>
               </form>
+              {/* end form skill */}
             </div>
             <div className="bg-white shadow my-2 gap-2 flex flex-col rounded">
+              {/* form pengalaman kerja */}
               <form className="flex flex-col gap-2 my-2 justify-start rounded mx-4">
                 <div className="mb-2 text-start text-xl">
                   <h4 className="font-semibold text-[22px] text-[#1F2A36] leading-[56px]">
@@ -150,7 +219,8 @@ export default function WorkersPage() {
                     placeholder="Masukan Posisi"
                   />
                 </label>
-                <div className="grid grid-cols-2 w-full">
+                <div className="grid grid-flow-row w-full">
+                  <div className="grid grid-cols-2">
                   <div>
                     <label className="flex flex-col my-2 mx-2 text-[12px] text-[#9EA0A5]">
                       Nama Perusahaan
@@ -171,6 +241,7 @@ export default function WorkersPage() {
                       />
                     </label>
                   </div>
+                  </div>
                   <div className="grid grid-cols-1">
                     <label className="flex flex-col my-2 mx-2 text-[12px] text-[#9EA0A5]">
                       Deskripsi Singkat
@@ -185,8 +256,10 @@ export default function WorkersPage() {
                   Tambah Pengalaman Kerja
                 </button>
               </form>
+              {/* end form pengalaman kerja */}
             </div>
             <div className="bg-white shadow my-2 gap-2 flex flex-col rounded">
+              {/* form portofolio */}
               <form className="flex flex-col gap-2 my-2 justify-start mx-4">
                 <div className="mb-2 text-start text-xl">
                   <h4 className="font-semibold text-[22px] text-[#1F2A36] leading-[56px]">
@@ -263,6 +336,7 @@ export default function WorkersPage() {
                   Tambah Portofolio
                 </button>
               </form>
+              {/* end form portofolio */}
             </div>
           </section>
           <div>
