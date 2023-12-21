@@ -1,10 +1,11 @@
 "use client";
 
+import axios from "axios";
 import leftPoster from "img/poster-login.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -14,10 +15,11 @@ export default function RegisterPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [NoHp, setNoHp] = useState("");
+  const [nohp, setNohp] = useState("");
   const [password, setPassword] = useState("");
   const [selectedRole, setSelectedRole] = useState("");
 
+  const router = useRouter();
   const validateEmail = (input: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(input);
@@ -31,54 +33,28 @@ export default function RegisterPage() {
   const validateRole = (input: string) => {
     return input.trim() !== ""; // Role must not be an empty string
   };
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    if (!validateEmail(email)) {
-      setError("Invalid email format");
-      return;
-    }
-    if (!validateNoHp(NoHp)) {
-      setError("Invalid phone number (must be 12 digits)");
-      return;
-    }
-    if (!validatePassword(password)) {
-      setError("Password must be at least 6 characters");
-      return;
-    }
-    if (!validateRole(selectedRole)) {
-      setError("Please select a role");
-      return;
-    }
-    setError("");
-    setIsLoading(true);
 
-    const res = await fetch("/api/auth/register", {
-      method: "POST",
-      body: JSON.stringify({
-        name: e.target.name.value,
-        email: e.target.email.value,
-        password: e.target.password.value,
-        NoHp: e.target.NoHp.value,
-        role: selectedRole,
-      }),
+  const handleSubmit = async (e: SyntheticEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    await axios.post("/api/auth/register", {
+      name,
+      email,
+      nohp,
+      password,
+      role: selectedRole,
     });
 
-    if (res.status === 200) {
-      e.target.reset();
-      setIsLoading(false);
-      push("/login");
-      toast.success("Registrasi Berhasil!");
-    } else if (res.status === 400) {
-      setError("Email already exists");
-      setIsLoading(false);
-      toast.error("Email already exists. Please use a different email.");
-    } else {
-      setError("Registration failed");
-      setIsLoading(false);
-      toast.error("Registration failed. Please try again.");
-    }
+    setIsLoading(false);
+    setName("");
+    setEmail("");
+    setNohp("");
+    setPassword("");
+    setSelectedRole("");
+    router.refresh();
+    push("/login");
   };
-
+    
   return (
     <main className="grid grid-cols-1 md:grid-cols-2 bg-slate-50 font-openSans">
       <section className="flex justify-center md:justify-start">
@@ -134,9 +110,9 @@ export default function RegisterPage() {
             <input
               id="NoHp"
               name="NoHp"
-              type="number"
-              value={NoHp}
-              onChange={(e) => setNoHp(e.target.value)}
+              type="string"
+              value={nohp}
+              onChange={(e) => setNohp(e.target.value)}
               placeholder="Masukkan No.HP"
               className="input input-bordered w-full text-[14px] text-[#9EA0A5]"
             />

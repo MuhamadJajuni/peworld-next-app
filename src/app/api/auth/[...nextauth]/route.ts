@@ -1,5 +1,4 @@
 import { compare } from 'bcrypt';
-import { login } from '@/lib/service';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
@@ -37,7 +36,6 @@ const authOptions: NextAuthOptions = {
             const passwordConfirm = await compare(password, user.password);
 
             if (passwordConfirm && user.role === role) {
-              // Include userId in the token
               return { ...user, userId: user.id };
             }
           }

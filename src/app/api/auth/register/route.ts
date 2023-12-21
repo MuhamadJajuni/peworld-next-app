@@ -1,23 +1,21 @@
-import { register } from "@/lib/service";
-
+import type { User } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
-// Make the surrounding function async
-export async function POST(request: NextRequest) {
-    try {
-        const req = await request.json();
-        const res = await register(req);
-        return NextResponse.json(
-            { status: res.status, message: res.message },
-            { status: res.statusCode }
-        );
-    } catch (error) {
-        console.error("Error during POST request:", error);
-        return NextResponse.json(
-            { status: "error", message: "Internal Server Error" },
-            { status: 500 }
-        );
-    }
-}
+const prisma = new PrismaClient()
 
-
+export const POST = async (request: NextRequest) => {
+  const body: User = await request.json();
+  console.log(body);
+  
+  const createUser = await prisma.user.create({
+    data: {
+        name: body.name,
+        email: body.email,
+        nohp: body.nohp,
+        password: body.password,
+        role: body.role,
+    },
+  });
+  return NextResponse.json(createUser, { status: 201 });
+};
