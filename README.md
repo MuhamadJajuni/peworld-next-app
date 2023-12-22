@@ -50,7 +50,6 @@ Web Peworld is a web-based application for job seekers and companies to search f
 - [Daisyui](https://daisyui.com/)
 - [Framer Motion](https://www.framer.com/motion/)
 - [Firebase Storage](https://console.firebase.google.com/?hl=id)
-- [Firebase Firestrore](https://console.firebase.google.com/?hl=id)
 - and other
 
 <!-- GETTING STARTED -->
