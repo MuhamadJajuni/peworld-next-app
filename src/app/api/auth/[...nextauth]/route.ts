@@ -1,11 +1,9 @@
-import { compare } from 'bcrypt';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 interface CredentialsWithRole {
   email: string;
   password: string;
-  role: string;
 }
 
 const authOptions: NextAuthOptions = {
@@ -20,28 +18,29 @@ const authOptions: NextAuthOptions = {
       credentials: {
         email: { label: 'Email', type: 'email', placeholder: 'Email' },
         password: { label: 'Password', type: 'password', placeholder: 'Password' },
-        role: { label: 'Role', type: 'text', placeholder: 'Role' },
       },
       async authorize(credentials: CredentialsWithRole | undefined, req: any) {
         if (!credentials) {
           throw new Error('Credentials are undefined');
         }
 
-        const { email, password, role } = credentials;
+        const { email } = credentials;
 
         try {
-          const user: any = await login({ email });
+          const res = await fetch("https://hire-job-backend-rho.vercel.app/login", {
+            method: 'POST',
+            body: JSON.stringify(credentials),
+            headers: { "Content-Type": "application/json" }
+          });
 
-          if (user) {
-            const passwordConfirm = await compare(password, user.password);
+          const user = await res.json();
 
-            if (passwordConfirm && user.role === role) {
-              return { ...user, userId: user.id };
-            }
+          if (user && user.data.email === email) {
+            return { ...user, userId: user.id };
           }
-
           return null;
         } catch (error) {
+          console.error('Failed to login:', error);
           throw new Error('Failed to login');
         }
       },
@@ -49,18 +48,16 @@ const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async jwt({ token, account, user }: any) {
-      if (account?.provider === 'credentials') {
-        // Include userId in the token
-        token.userId = user.userId;
-        token.email = user.email;
-        token.name = user.name;
-        token.role = user.role;
+      if (account?.provider === 'credentials' && user) {
+        token.userId = user.data.id;
+        token.email = user.data.email;
+        token.name = user.data.name;
+        token.role = user.data.role;
       }
       return token;
     },
     async session({ session, token }: any) {
       if ('userId' in token) {
-        // Include userId in the session
         session.user.userId = token.userId;
       }
       if ('email' in token) {

@@ -16,7 +16,6 @@ const Spinner = () => <span className="loading loading-bars loading-md"></span>;
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string().required("Password is required"),
-  role: Yup.string().required("Role is required"),
 });
 
 export default function LoginPage({ searchParams }: any) {
@@ -25,6 +24,7 @@ export default function LoginPage({ searchParams }: any) {
   const [error, setError] = useState("");
 
   const callbackUrl = searchParams?.callbackUrl || "/home";
+
   const handleLogin = async (
     values: { email: any; password: any; role: any },
     { setSubmitting }: any
@@ -34,15 +34,12 @@ export default function LoginPage({ searchParams }: any) {
         redirect: false,
         email: values.email,
         password: values.password,
-        role: values.role,
         callbackUrl: searchParams.callbackUrl,
       });
 
       if (!res?.ok || res?.status !== 200) {
         if (res?.error === "Password salah") {
           setError("Password salah");
-        } else if (res?.error === "Role tidak sesuai") {
-          setError("Role tidak sesuai");
         } else if (res?.error === "Email tidak terdaftar") {
           setError("Email tidak terdaftar");
         } else {
@@ -118,32 +115,6 @@ export default function LoginPage({ searchParams }: any) {
                 />
                 <ErrorMessage
                   name="password"
-                  component="div"
-                  className="text-red-500"
-                />
-
-                <label
-                  htmlFor="role"
-                  className="text-[12px] text-[#9EA0A5] mt-3"
-                >
-                  Role
-                </label>
-                <FastField
-                  as="select"
-                  id="role"
-                  name="role"
-                  value={values.role}
-                  onChange={handleChange}
-                  className="select select-bordered select-sm w-full"
-                >
-                  <option value="" disabled>
-                    Pilih Role
-                  </option>
-                  <option value="workers">Pekerja (Workers)</option>
-                  <option value="recruiters">Perekrut (Recruiters)</option>
-                </FastField>
-                <ErrorMessage
-                  name="role"
                   component="div"
                   className="text-red-500"
                 />

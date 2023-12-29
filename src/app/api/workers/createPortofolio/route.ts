@@ -1,5 +1,3 @@
-import { createPortofolio } from "@/lib/service";
-
 import { NextRequest, NextResponse } from "next/server";
 
 // Make the surrounding function async

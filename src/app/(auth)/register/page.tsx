@@ -17,6 +17,7 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [nohp, setNohp] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [selectedRole, setSelectedRole] = useState("");
 
   const router = useRouter();
@@ -30,18 +31,22 @@ export default function RegisterPage() {
   const validatePassword = (input: string | any[]) => {
     return input.length >= 6;
   };
+  const validateConfirmPassword = (input: string) => {
+    return input === password;
+  };
   const validateRole = (input: string) => {
-    return input.trim() !== ""; // Role must not be an empty string
+    return input.trim()
   };
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    await axios.post("/api/auth/register", {
+    await axios.post("https://hire-job-backend-rho.vercel.app/register", {
       name,
       email,
       nohp,
       password,
+      confirmPassword,
       role: selectedRole,
     });
 
@@ -50,6 +55,7 @@ export default function RegisterPage() {
     setEmail("");
     setNohp("");
     setPassword("");
+    setConfirmPassword("");
     setSelectedRole("");
     router.refresh();
     push("/login");
@@ -125,6 +131,17 @@ export default function RegisterPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Masukkan Kata Sandi"
+              className="input input-bordered w-full text-[14px] text-[#9EA0A5]"
+            />
+
+            <label className="text-[#9EA0A5] text-[12px]">Kata Sandi</label>
+            <input
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="Masukkan Ulang Kata Sandi"
               className="input input-bordered w-full text-[14px] text-[#9EA0A5]"
             />
 
