@@ -12,7 +12,7 @@ import { useState } from "react";
 export default function WorkersPage() {
   const [activeTab] = useState(1);
   const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState('');
+  const [isLoading, setIsLoading] = useState("");
 
   return (
     <main className="flex flex-col relative">
@@ -22,7 +22,7 @@ export default function WorkersPage() {
           <div className="grid grid-flow-row">
             <div className="col-start-2 col-span-3 mr-24">
               <div className="grid grid-cols-1 h-64">
-               <CardProfileWorkers />
+                <CardProfileWorkers />
               </div>
             </div>
           </div>

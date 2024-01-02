@@ -24,6 +24,6 @@
       "cmp/*": ["./src/app/@components/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/testAPI/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/testAPI/page.jsx", "src/app/@components/workers/CardProfileWorkers.jsx", "src/app/@components/workers/FormBiodata.jsx", "src/app/@components/workers/FormExperience.jsx", "src/app/@components/workers/FormPortofolio.jsx", "src/app/@components/workers/FormSkill.jsx", "src/app/home/page.jsx"],
   "exclude": ["node_modules"]
 }

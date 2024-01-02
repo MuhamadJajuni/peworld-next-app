@@ -1,10 +1,10 @@
+import Avatar from "img/LiamPayne.svg";
+import lonceng from "img/bell-navbar.svg";
+import logoPeworld from "img/logoPeworld.svg";
+import mail from "img/mail-navbar.svg";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import logoPeworld from "img/logoPeworld.svg";
-import Avatar from "img/LiamPayne.svg";
-import lonceng from "img/bell-navbar.svg";
-import mail from "img/mail-navbar.svg";
 
 interface GreetingProps {
   session: any;
@@ -64,22 +64,22 @@ const Greeting: React.FC<GreetingProps> = ({ session }) => {
                 >
                   <li>
                     <a className="justify-between">
-                    {status === "authenticated" &&
-                      session?.user?.role === "workers" && (
-                        <Link href="/workers">
-                          <li className="text-black font-normal cursor-pointer">
-                            Profile
-                          </li>
-                        </Link>
-                      )}
-                    {status === "authenticated" &&
-                      session?.user?.role === "recruiters" && (
-                        <Link href="/recruiters">
-                          <li className="text-black font-normal cursor-pointer">
-                          Profile
-                          </li>
-                        </Link>
-                      )}
+                      {status === "authenticated" &&
+                        session?.user?.role === "workers" && (
+                          <Link href="/workers">
+                            <li className="text-black font-normal cursor-pointer">
+                              Profile
+                            </li>
+                          </Link>
+                        )}
+                      {status === "authenticated" &&
+                        session?.user?.role === "recruiters" && (
+                          <Link href="/recruiters">
+                            <li className="text-black font-normal cursor-pointer">
+                              Profile
+                            </li>
+                          </Link>
+                        )}
                       <span className="badge">New</span>
                     </a>
                   </li>

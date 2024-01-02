@@ -1,5 +1,5 @@
 import { getToken } from 'next-auth/jwt';
-import { NextMiddleware, NextRequest, NextResponse, NextFetchEvent } from 'next/server';
+import { NextFetchEvent, NextMiddleware, NextRequest, NextResponse } from 'next/server';
 
 const onlyWorkersPages = [
   "/workers/:path*",

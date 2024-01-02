@@ -8,33 +8,7 @@ import maps from "img/maps.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-interface Geolocation {
-  lat: string;
-  long: string;
-}
 
-interface Address {
-  city: string;
-  street: string;
-  number: number;
-  zipcode: string;
-  geolocation: Geolocation;
-}
-
-interface Name {
-  firstname: string;
-  lastname: string;
-}
-
-interface Worker {
-  id: number;
-  email: string;
-  username: string;
-  password: string;
-  name: Name;
-  address: Address;
-  phone: string;
-}
 
 export default function Home() {
   const [workers, setWorkers] = useState<Worker[]>([]);

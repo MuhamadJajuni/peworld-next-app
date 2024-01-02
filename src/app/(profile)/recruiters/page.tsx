@@ -8,7 +8,7 @@ import Linkedin from "img/linkedin 1.svg";
 import Email from "img/mail.svg";
 import Telepon from "img/phone 1.svg";
 import Image from "next/image";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 interface Company {
   id: string;
@@ -23,13 +23,13 @@ interface Company {
 }
 
 async function getData(): Promise<Company[]> {
-  const res = await fetch('http://localhost:3000/api/users');
-  
+  const res = await fetch("http://localhost:3000/api/users");
+
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data');
+    throw new Error("Failed to fetch data");
   }
-  
+
   const data = await res.json();
   return data.data; // Access the 'data' property of the API response
 }

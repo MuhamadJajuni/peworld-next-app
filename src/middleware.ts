@@ -1,6 +1,6 @@
 import withAuth from '@/middlewares/withAuth'
-import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { NextResponse } from 'next/server'
 
 
 export function mainMiddleware(_request: NextRequest) {
@@ -9,4 +9,4 @@ export function mainMiddleware(_request: NextRequest) {
 }
 
 export default withAuth(mainMiddleware, ["/home", "/login", "/register", '/workers/+edit*'
-, '/recruiters/:path*'])
+    , '/recruiters/:path*'])

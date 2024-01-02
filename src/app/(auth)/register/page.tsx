@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SyntheticEvent, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function RegisterPage() {
@@ -35,7 +35,7 @@ export default function RegisterPage() {
     return input === password;
   };
   const validateRole = (input: string) => {
-    return input.trim()
+    return input.trim();
   };
 
   const handleSubmit = async (e: SyntheticEvent) => {
@@ -60,7 +60,7 @@ export default function RegisterPage() {
     router.refresh();
     push("/login");
   };
-    
+
   return (
     <main className="grid grid-cols-1 md:grid-cols-2 bg-slate-50 font-openSans">
       <section className="flex justify-center md:justify-start">

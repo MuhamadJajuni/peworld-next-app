@@ -34,7 +34,8 @@ const authOptions: NextAuthOptions = {
           });
 
           const user = await res.json();
-
+          console.log(user);
+          
           if (user && user.data.email === email) {
             return { ...user, userId: user.id };
           }
@@ -52,7 +53,9 @@ const authOptions: NextAuthOptions = {
         token.userId = user.data.id;
         token.email = user.data.email;
         token.name = user.data.name;
+        token.image = user.data.image;
         token.role = user.data.role;
+        token.accessToken = user.data.token;
       }
       return token;
     },
@@ -68,6 +71,10 @@ const authOptions: NextAuthOptions = {
       }
       if ('role' in token) {
         session.user.role = token.role;
+      } if ('accessToken' in token) {
+        session.user.accessToken = token.accessToken;
+      } if ('image' in token) {
+        session.user.image = token.image;
       }
       return session;
     },

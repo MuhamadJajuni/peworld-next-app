@@ -1,31 +1,47 @@
-"use client";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 export default function FormSkill() {
-  const [skill, setSkill] = useState("");
+  const [name, setName] = useState("");
+  const { data: session } = useSession();
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("/api/workers/createSkill", {
+
+    if (!session) {
+      // Handle jika pengguna belum terotentikasi
+      console.error("User not authenticated");
+      return;
+    }
+
+    const res = await fetch("https://hire-job-backend-rho.vercel.app/skill", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${session.user.accessToken}`,
+      },
       body: JSON.stringify({
-        skill,
+        name,
       }),
     });
 
     if (res.ok) {
       e.target.reset();
-      console.log("data submitted");
+      console.log("Data submitted");
     } else if (res.status === 400) {
-      console.log("something went wrong");
+      console.log("Something went wrong");
     } else {
-      console.log("kesalahan");
+      console.log("Error");
     }
   };
+
   return (
     <div className="bg-white shadow my-2 gap-2 flex flex-col rounded">
       {/* form skill */}
-      <form className="flex flex-col gap-2 my-2 justify-start mx-4" onSubmit={handleSubmit}>
+      <form
+        className="flex flex-col gap-2 my-2 justify-start mx-4"
+        onSubmit={handleSubmit}
+      >
         <div className="mb-2 text-start text-xl">
           <h4 className="font-semibold text-[22px] text-[#1F2A36] leading-[56px]">
             SKILL
@@ -38,14 +54,17 @@ export default function FormSkill() {
               <input
                 className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
                 type="text"
-                value={skill}
-                onChange={(e) => setSkill(e.target.value)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="Masukan Skill"
               />
             </label>
           </div>
           <div className="flex justify-end">
-            <button className="bg-[#FBB017] text-white font-bold w-full text-[14px] leading-[19px] my-2 mx-1 rounded">
+            <button
+              className="bg-[#FBB017] text-white font-bold w-full text-[14px] leading-[19px] my-2 mx-1 rounded"
+              type="submit"
+            >
               Simpan
             </button>
           </div>
