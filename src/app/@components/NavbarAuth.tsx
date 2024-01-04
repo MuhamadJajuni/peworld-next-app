@@ -6,12 +6,8 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 
-interface GreetingProps {
-  session: any;
-}
-
-const Greeting: React.FC<GreetingProps> = ({ session }) => {
-  const status = session?.user ? "authenticated" : "unauthenticated";
+const NavbarAuth: React.FC = () => {
+  const { data: session, status }: { data: any; status: string } = useSession();
 
   const handleSignOut = () => {
     const isConfirmed = window.confirm("Apakah kamu mau Logout?");
@@ -22,27 +18,38 @@ const Greeting: React.FC<GreetingProps> = ({ session }) => {
   };
 
   return (
-    <div className="flex justify-items-start items-center gap-4 mx-3">
-      {status === "authenticated" ? (
-        <>
+    <nav className="flex py-1 px-1 mx-3 bg-white justify-between items-center">
+      <div className="flex justify-center justify-items-center items-center mx-5">
+        <div>
           <Image
-            src={lonceng}
+            src={logoPeworld}
             alt="logo"
-            width={25}
-            height={25}
             className="object-contain"
             priority
           />
-          <Image
-            src={mail}
-            alt="logo"
-            width={25}
-            height={25}
-            className="object-contain"
-            priority
-          />
-          {session?.user?.image || (
-            <>
+        </div>
+      </div>
+
+      <div className="flex justify-items-start items-center gap-4 mx-3">
+        {status === "authenticated" ? (
+          <>
+            <Image
+              src={lonceng}
+              alt="logo"
+              width={25}
+              height={25}
+              className="object-contain"
+              priority
+            />
+            <Image
+              src={mail}
+              alt="logo"
+              width={25}
+              height={25}
+              className="object-contain"
+              priority
+            />
+            {(session?.user?.image || session?.user?.image === null) ? (
               <div className="dropdown dropdown-end dropdown-hover">
                 <div
                   tabIndex={0}
@@ -51,7 +58,7 @@ const Greeting: React.FC<GreetingProps> = ({ session }) => {
                 >
                   <div className="w-9 rounded-full">
                     <Image
-                      src={Avatar}
+                      src={session.user.image || {Avatar}}
                       alt="User Avatar"
                       width={20}
                       height={20}
@@ -88,36 +95,19 @@ const Greeting: React.FC<GreetingProps> = ({ session }) => {
                   </li>
                 </ul>
               </div>
-            </>
-          )}
-        </>
-      ) : (
-        <button
-          className="bg-orange-400 rounded-md px-3 text-sm h-7 hover:text-blue-300"
-          onClick={() => signIn()}
-        >
-          Log In
-        </button>
-      )}
-    </div>
-  );
-};
-
-const NavbarAuth: React.FC = () => {
-  const { data: session, status }: { data: any; status: string } = useSession();
-  return (
-    <nav className="flex py-1 px-1 mx-3 bg-white justify-between">
-      <div className="flex justify-center justify-items-center items-center mx-5">
-        <div>
-          <Image
-            src={logoPeworld}
-            alt="logo"
-            className="object-contain"
-            priority
-          />
-        </div>
+            ) : (
+              <p>User image not available</p>
+            )}
+          </>
+        ) : (
+          <button
+            className="bg-orange-400 rounded-md px-3 text-sm h-7 hover:text-blue-300"
+            onClick={() => signIn()}
+          >
+            Log In
+          </button>
+        )}
       </div>
-      <Greeting session={session} />
     </nav>
   );
 };

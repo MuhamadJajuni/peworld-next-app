@@ -1,48 +1,64 @@
 "use client";
 
+import CardProfileRecruiters from "@/@components/recruiters/CardProfileRecruiters";
 import FooterLayout from "cmp/Footer";
 import NavbarAuth from "cmp/NavbarAuth";
-import fotoLouis from "img/foto-louis-rounded.svg";
-import Image from "next/image";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { SetStateAction, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function WorkersPage() {
   const [activeTab, setActiveTab] = useState(1);
   const [error, setError] = useState("");
   const { push } = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const [namePerusahaan, setNamePerusahaan] = useState("");
-  const [bidang, setBidang] = useState("");
-  const [kota, setKota] = useState("");
-  const [deskripsiSingkat, setDeskripsiSingkat] = useState("");
+  const { data: session } = useSession();
+
+  const [company_name, setCompanyName] = useState("");
+  const [company_field, setCompanyField] = useState("");
+  const [residence, setResidence] = useState("");
+  const [description, setDescription] = useState("");
   const [email, setEmail] = useState("");
-  const [noTelepon, setNoTelepon] = useState("");
-  const [linkedin, setLinkedin] = useState("");
+  const [nohp, setNoHp] = useState("");
   const [instagram, setInstagram] = useState("");
+  const [linkedin, setLinkedin] = useState("");
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const res = await fetch("/api/recruiters/edit", {
-      method: "POST",
-      body: JSON.stringify({
-        namePerusahaan,
-        bidang,
-        kota,
-        deskripsiSingkat,
-        email,
-        noTelepon,
-        linkedin,
-        instagram,
-      }),
-    });
+
+    if (!session) {
+      console.error("User not authenticated");
+      return;
+    }
+
+    const res = await fetch(
+      `https://hire-job-backend-rho.vercel.app/recruiter/profile/${session.user.userId}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${session.user.accessToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          company_name,
+          company_field,
+          residence,
+          description,
+          email,
+          instagram,
+          nohp,
+          linkedin,
+        }),
+      }
+    );
 
     if (res.ok) {
       e.target.reset();
       setIsLoading(false);
       push("/recruiters");
-      toast.success("Data has been updated");
+      toast.success("Data updated successfully");
     } else if (res.status === 400) {
       setError("Something ");
       setIsLoading(false);
@@ -62,43 +78,7 @@ export default function WorkersPage() {
       <NavbarAuth />
       <section className="container bg-[#5E50A1] h-64">
         <section className="grid grid-cols-2 h-full mt-[58px] gap-5">
-          <div className="grid grid-flow-row ">
-            <div className="col-start-2 col-span-3 mr-24">
-              <div className="grid grid-cols-1 h-64">
-                <div className="col-start-1 col-span-4 flex flex-col h-auto bg-white rounded ml-20 mx-10 shadow">
-                  <div className="grid grid-rows-1 grid-flow-col gap-2 justify-center items-center mt-5 mx-5">
-                    <div className="flex flex-col justify-center items-center">
-                      <Image
-                        src={fotoLouis}
-                        alt="logo"
-                        width={100}
-                        height={100}
-                        className="object-contain"
-                        priority
-                      />
-                      <p className="flex justify-center my-2 font-semibold text-[22px] text-[#1F2A36]">
-                        PT. Martabat Jaya Abadi
-                      </p>
-                      <p className="flex justify-center my-2 font-normal text-[#1F2A36] text-[14px]">
-                        Financial Technology
-                      </p>
-                      <p className="flex justify-center my-2 font-normal text-[#9EA0A5] text-[14px]">
-                        Bandung, Jawa Barat
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex flex-col justify-center w-full gap-3 rounded my-5 mt-10">
-                    <button className="bg-[#5E50A1] text-white py-2 px-2 font-bold text-[16px] leading-[20px] mx-1 rounded">
-                      Simpan
-                    </button>
-                    <button className="bg-white box-content mx-1 py-2 px-2 border leading-[20px] font-bold border-[#5E50A1] text-[16px] text-[#5E50A1] rounded">
-                      Batal
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <CardProfileRecruiters />
           <section className="bg-white mr-24 rounded grid grid-flow-row gap-2 mx-2 mb-20">
             <div className="bg-white shadow py-2 my-1 gap-2 flex flex-col rounded">
               <form
@@ -116,17 +96,18 @@ export default function WorkersPage() {
                   <input
                     className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
                     type="text"
-                    value={namePerusahaan}
-                    onChange={(e) => setNamePerusahaan(e.target.value)}
-                    placeholder="Masukan Nama Perusahaan"
+                    value={company_name}
+                    onChange={(e) => setCompanyName(e.target.value)}
+                    placeholder="Masukan nama perusahaan"
                   />
                 </label>
                 <label className="flex flex-col my-2 mx-2 text-[12px] text-[#9EA0A5]">
                   Bidang
                   <input
                     className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
-                    value={bidang}
-                    onChange={(e) => setBidang(e.target.value)}
+                    type="text"
+                    value={company_field}
+                    onChange={(e) => setCompanyField(e.target.value)}
                     placeholder="Masukan bidang perusahaan ex : Financial"
                   />
                 </label>
@@ -134,18 +115,17 @@ export default function WorkersPage() {
                   Kota
                   <input
                     className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
-                    type="text"
-                    value={kota}
-                    onChange={(e) => setKota(e.target.value)}
-                    placeholder="Masukan Kota"
+                    value={residence}
+                    onChange={(e) => setResidence(e.target.value)}
+                    placeholder="Masukan kota"
                   />
                 </label>
                 <label className="flex flex-col my-2 mx-2 text-[12px] text-[#9EA0A5]">
                   Deskripsi Singkat
                   <textarea
-                    className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
-                    value={deskripsiSingkat}
-                    onChange={(e) => setDeskripsiSingkat(e.target.value)}
+                    className="border rounded mt-1 py-5 px-5 text-[14px] text-[#858D96]"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                     placeholder="Tuliskan Deskripsi Singkat"
                   ></textarea>
                 </label>
@@ -153,10 +133,10 @@ export default function WorkersPage() {
                   Email
                   <input
                     className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
-                    type="text"
+                    type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Masukan Email"
+                    placeholder="Masukan email"
                   />
                 </label>
                 <label className="flex flex-col my-2 mx-2 text-[12px] text-[#9EA0A5]">
@@ -173,9 +153,9 @@ export default function WorkersPage() {
                   No Telepon
                   <input
                     className="border rounded mt-1 py-2 px-2 text-[14px] text-[#858D96]"
-                    type="text"
-                    value={noTelepon}
-                    onChange={(e) => setNoTelepon(e.target.value)}
+                    type="number"
+                    value={nohp}
+                    onChange={(e) => setNoHp(e.target.value)}
                     placeholder="Masukan nomor telepon"
                   />
                 </label>
@@ -189,8 +169,8 @@ export default function WorkersPage() {
                     placeholder="Masukan nama Linkedin"
                   />
                 </label>
-                <button className="bg-[#5E50A1] w-full rounded py-2 text-white">
-                  Simpan
+                <button className="bg-[#5E50A1] w-full rounded my-5 flex justify-center py-2 text-white">
+                  Update Data
                 </button>
               </form>
             </div>

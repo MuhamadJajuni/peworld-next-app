@@ -1,8 +1,11 @@
 import { useSession } from "next-auth/react";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function FormPortofolio() {
   const { data: session } = useSession();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [name, setName] = useState("");
   const [portfolio_type, setPortfolio_type] = useState("");
   const [image, setImage] = useState("");
@@ -23,33 +26,40 @@ export default function FormPortofolio() {
     formData.append("image", image);
     formData.append("repo_link", repo_link);
 
-    const res = await fetch(
-      "https://hire-job-backend-rho.vercel.app/portfolio",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${session.user.accessToken}`, // Tambahkan token akses ke dalam header
-        },
-        body: formData,
-      }
-    );
+    try {
+      setIsSubmitting(true);
+      const res = await fetch(
+        "https://hire-job-backend-rho.vercel.app/portfolio",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${session.user.accessToken}`, // Tambahkan token akses ke dalam header
+          },
+          body: formData,
+        }
+      );
 
-    if (res.ok) {
-      setName(""); // Atur ulang nilai name setelah berhasil dikirim
-      setPortfolio_type(""); // Atur ulang nilai portfolio_type setelah berhasil dikirim
-      setImage(""); // Atur ulang nilai image setelah berhasil dikirim
-      setRepo_link(""); // Atur ulang nilai repo_link setelah berhasil dikirim
-      console.log("Data submitted");
-    } else if (res.status === 400) {
-      console.log("Something went wrong");
-    } else {
-      console.log("Error");
+      if (res.ok) {
+        e.target.reset();
+        setName("");
+        setPortfolio_type("");
+        setImage("");
+        setRepo_link("");
+        toast.success("Data has been submitted successfully");
+      } else if (res.status === 400) {
+        toast.error("Something went wrong");
+      } else {
+        toast.error("Error");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
     <div className="bg-white shadow my-2 gap-2 flex flex-col rounded">
-      {/* form portofolio */}
       <form
         className="flex flex-col gap-2 my-2 justify-start mx-4"
         onSubmit={handleSubmit}
@@ -106,11 +116,11 @@ export default function FormPortofolio() {
         <button
           className="border border-[#FBB017] text-[#FBB017] leading-[20px] font-bold text-[16px] py-2 my-3 mx-2 rounded"
           type="submit"
+          disabled={isSubmitting}
         >
-          Add Portfolio
+          {isSubmitting ? "Menyimpan..." : "Add Portofolio"}
         </button>
       </form>
-      {/* end form portofolio */}
     </div>
   );
 }

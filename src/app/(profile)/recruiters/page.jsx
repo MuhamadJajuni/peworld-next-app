@@ -1,6 +1,7 @@
 "use client";
 
 import FooterLayout from "cmp/Footer";
+import { useSession } from "next-auth/react";
 import NavbarAuth from "cmp/NavbarAuth";
 import fotoLouis from "img/TomLouis.svg";
 import Instagram from "img/instagram.svg";
@@ -10,20 +11,22 @@ import Telepon from "img/phone 1.svg";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-interface Company {
-  id: string;
-  kota: string;
-  namePerusahaan: string;
-  linkedin: string;
-  email: string;
-  deskripsiSingkat: string;
-  noTelepon: string;
-  bidang: string;
-  instagram: string;
-}
 
-async function getData(): Promise<Company[]> {
-  const res = await fetch("http://localhost:3000/api/users");
+async function getData(session) {
+
+  if (!session) {
+    // Handle jika pengguna belum terotentikasi
+    console.error("User not authenticated");
+    return;
+  }
+
+  const res = await fetch("https://hire-job-backend-rho.vercel.app/recruiter/profile", {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${session.user.accessToken}`,
+      "Content-Type": "application/json",
+    },
+  });
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
@@ -31,12 +34,12 @@ async function getData(): Promise<Company[]> {
   }
 
   const data = await res.json();
-  return data.data; // Access the 'data' property of the API response
+  return data; // Access the 'data' property of the API response
 }
 
 export default function RecruitersPage() {
-  const [data, setData] = useState<Company[]>([]);
-  const [error, setError] = useState("");
+  const { data: session } = useSession();
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {

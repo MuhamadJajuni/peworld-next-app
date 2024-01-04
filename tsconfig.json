@@ -24,6 +24,6 @@
       "cmp/*": ["./src/app/@components/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/testAPI/page.jsx", "src/app/@components/workers/CardProfileWorkers.jsx", "src/app/@components/workers/FormBiodata.jsx", "src/app/@components/workers/FormExperience.jsx", "src/app/@components/workers/FormPortofolio.jsx", "src/app/@components/workers/FormSkill.jsx", "src/app/home/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/testAPI/page.jsx", "src/app/@components/workers/CardProfileWorkers.jsx", "src/app/@components/workers/FormBiodata.jsx", "src/app/@components/workers/FormExperience.jsx", "src/app/@components/workers/FormPortofolio.jsx", "src/app/@components/workers/FormSkill.jsx", "src/app/home/page.jsx", "src/app/(profile)/recruiters/edit/page.tsx", "src/app/@components/recruiters/CardProfileRecruiters.jsx", "src/app/(profile)/recruiters/page.jsx"],
   "exclude": ["node_modules"]
 }

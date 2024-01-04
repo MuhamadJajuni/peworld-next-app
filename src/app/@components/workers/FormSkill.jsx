@@ -1,43 +1,53 @@
 import { useSession } from "next-auth/react";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function FormSkill() {
   const [name, setName] = useState("");
   const { data: session } = useSession();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!session) {
-      // Handle jika pengguna belum terotentikasi
       console.error("User not authenticated");
       return;
     }
 
-    const res = await fetch("https://hire-job-backend-rho.vercel.app/skill", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${session.user.accessToken}`,
-      },
-      body: JSON.stringify({
-        name,
-      }),
-    });
+    try {
+      setIsSubmitting(true);
 
-    if (res.ok) {
-      e.target.reset();
-      console.log("Data submitted");
-    } else if (res.status === 400) {
-      console.log("Something went wrong");
-    } else {
-      console.log("Error");
+      const res = await fetch("https://hire-job-backend-rho.vercel.app/skill", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session.user.accessToken}`,
+        },
+        body: JSON.stringify({
+          name,
+        }),
+      });
+
+      if (res.ok) {
+        e.target.reset();
+        setName("");
+        toast.success("Data has been submitted successfully");
+      } else if (res.status === 400) {
+        toast.error("Something went wrong");
+      } else {
+        toast.error("Error");
+      }
+    } catch (error) {
+      console.error("Error submitting data:", error.message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
     <div className="bg-white shadow my-2 gap-2 flex flex-col rounded">
-      {/* form skill */}
       <form
         className="flex flex-col gap-2 my-2 justify-start mx-4"
         onSubmit={handleSubmit}
@@ -64,13 +74,14 @@ export default function FormSkill() {
             <button
               className="bg-[#FBB017] text-white font-bold w-full text-[14px] leading-[19px] my-2 mx-1 rounded"
               type="submit"
+              disabled={isSubmitting}
             >
-              Simpan
+              {isSubmitting ? "Menyimpan..." : "Simpan"}
             </button>
           </div>
         </div>
       </form>
-      {/* end form skill */}
+      <ToastContainer />
     </div>
   );
 }

@@ -1,8 +1,11 @@
 import { useSession } from "next-auth/react";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function FormExperience() {
   const { data: session } = useSession();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [jobdesk, setJobdesk] = useState("");
   const [company_name, setCompany_Name] = useState("");
   const [date_start, setDate_Start] = useState("");
@@ -25,25 +28,37 @@ export default function FormExperience() {
       description,
     };
 
-    const res = await fetch(
-      "https://hire-job-backend-rho.vercel.app/work-experience",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${session.user.accessToken}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestBody),
-      }
-    );
+    try {
+      setIsSubmitting(true);
+      const res = await fetch(
+        "https://hire-job-backend-rho.vercel.app/work-experience",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${session.user.accessToken}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestBody),
+        }
+      );
 
-    if (res.ok) {
-      e.target.reset();
-      console.log("data submitted");
-    } else if (res.status === 400) {
-      console.log("something went wrong");
-    } else {
-      console.log("kesalahan");
+      if (res.ok) {
+        e.target.reset();
+        setJobdesk("");
+        setCompany_Name("");
+        setDate_Start("");
+        setDate_End("");
+        setDescription("");
+        toast.success("Data has been submitted successfully");
+      } else if (res.status === 400) {
+        toast.error("Something went wrong");
+      } else {
+        toast.error("Error");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -123,8 +138,12 @@ export default function FormExperience() {
             </label>
           </div>
         </div>
-        <button className="border border-[#FBB017] text-[#FBB017] leading-[20px] font-bold text-[16px] py-2 my-3 mx-2 rounded">
-          Tambah Pengalaman Kerja
+        <button
+          className="border border-[#FBB017] text-[#FBB017] leading-[20px] font-bold text-[16px] py-2 my-3 mx-2 rounded"
+          type="submit"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Menyimpan..." : "Tambah Pengalaman Kerja"}
         </button>
       </form>
       {/* end form pengalaman kerja */}

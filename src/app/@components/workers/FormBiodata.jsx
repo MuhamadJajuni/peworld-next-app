@@ -1,9 +1,15 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function formBiodata() {
   const { data: session } = useSession();
+  const { push } = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState("");
   const [nohp, setNoHp] = useState("");
   const [jobdesk, setJobDesk] = useState("");
@@ -36,31 +42,52 @@ export default function formBiodata() {
       gitlab,
     };
 
-    const res = await fetch(
-      `https://hire-job-backend-rho.vercel.app/worker/profile/${session.user.userId}`,
-      {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${session.user.accessToken}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestBody),
-      }
-    );
+    try {
+      setIsSubmitting(true);
+      const res = await fetch(
+        `https://hire-job-backend-rho.vercel.app/worker/profile/${session.user.userId}`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${session.user.accessToken}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestBody),
+        }
+      );
 
-    if (res.ok) {
-      e.target.reset();
-      console.log("data submitted");
-    } else if (res.status === 400) {
-      console.log("something went wrong");
-    } else {
-      console.log("kesalahan");
+      if (res.ok) {
+        e.target.reset();
+        setDescription("");
+        setName("");
+        setNoHp("");
+        setJobType("");
+        setJobDesk("");
+        setResidence("");
+        setWorkplace("");
+        setInstagram("");
+        setGithub("");
+        setGitlab("");
+        setIsLoading(false);
+        push("/workers/edit");
+        toast.success("Data has been updated");
+      } else if (res.status === 400) {
+        setError("Something ");
+        setIsLoading(false);
+        toast.error("Something went wrong");
+      } else {
+        setIsLoading(false);
+        toast.error("Gagal Submit");
+      }
+    } catch (error) {
+      console.error("Error submitting data:", error.message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
     <div className="bg-white shadow my-2 gap-2 flex flex-col rounded">
-      {/* form data diri */}
       <form
         className="flex flex-col gap-2 justify-start mx-4"
         onSubmit={handleSubmit}
@@ -184,15 +211,15 @@ export default function formBiodata() {
             onChange={(e) => setDescription(e.target.value)}
           ></textarea>
         </label>
-
         <button
           className="bg-[#5E50A1] text-white py-2 px-2 font-bold text-[16px] leading-[20px] rounded"
           type="submit"
+          disabled={isSubmitting}
         >
-          Simpan
+          {isSubmitting ? "Menyimpan..." : "Simpan"}
         </button>
       </form>
-      {/* end form */}
+      <ToastContainer />
     </div>
   );
 }

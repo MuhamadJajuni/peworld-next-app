@@ -1,14 +1,20 @@
+import defaultProfileImage from "img/NialHoran.svg";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-
-import defaultProfileImage from "img/NialHoran.svg";
+import { Audio, Vortex } from "react-loader-spinner";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CardProfileWorkers() {
   const { data: session } = useSession();
+  const { push } = useRouter();
   const [profileData, setProfileData] = useState(null);
   const [imageFile, setImageFile] = useState(null);
   const [tempImageUrl, setTempImageUrl] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -26,7 +32,7 @@ export default function CardProfileWorkers() {
         );
 
         if (!response.ok) {
-          throw new Error("Failed to fetch data");
+          throw new Error("Failed to Fetch Data");
         }
 
         const data = await response.json();
@@ -49,6 +55,8 @@ export default function CardProfileWorkers() {
     event.preventDefault();
 
     try {
+      setIsLoading(true);
+
       if (!session || !profileData || !imageFile) {
         return;
       }
@@ -69,8 +77,17 @@ export default function CardProfileWorkers() {
         }
       );
 
-      if (!response.ok) {
-        throw new Error("Failed to update image");
+      if (response.ok) {
+        setIsLoading(false);
+        push("/workers/edit");
+        toast.success("Foto Update Succes");
+      } else if (response.status === 400 || 500) {
+        setError("Kesalahan Update Foto");
+        setIsLoading(false);
+        toast.error("Gagal Update Foto");
+      } else {
+        setIsLoading(false);
+        toast.error("Gagal Submit, Pastikan Foto Sesuai");
       }
 
       console.log("Image updated successfully");
@@ -78,11 +95,28 @@ export default function CardProfileWorkers() {
       window.location.reload();
     } catch (error) {
       console.error("Error updating image:", error.message);
+      setIsLoading(false);
     }
   };
 
-  if (!profileData) {
-    return <p>Loading...</p>;
+  if (isLoading || !profileData) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Vortex
+          height={120}
+          width={120}
+          radius={9}
+          color="green"
+          ariaLabel="three-dots-loading"
+          wrapperStyle={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+          wrapperClass="loading-wrapper"
+        />
+      </div>
+    );
   }
 
   const { name, jobdesk, job_type, residence, image } = profileData;
@@ -114,8 +148,19 @@ export default function CardProfileWorkers() {
               <button
                 type="submit"
                 className="flex justify-center items-center my-3 px-4 py-2 bg-white text-purple-400 rounded-md"
+                disabled={isLoading}
               >
-                Update Image
+                {isLoading ? (
+                  <Audio
+                    height={20}
+                    width={20}
+                    radius={9}
+                    color="blue"
+                    ariaLabel="three-dots-loading"
+                  />
+                ) : (
+                  "Update Image"
+                )}
               </button>
             </form>
             <p className="flex justify-center pt-5 my-5 font-openSans font-semibold text-[22px] leading-[56px] text-[#1F2A36] ">
@@ -133,6 +178,7 @@ export default function CardProfileWorkers() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
